@@ -3,6 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Blazor download files to the browser from c#.</Description>
+    <PackageProjectUrl>https://github.com/arivera12/BlazorDownloadFile</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/arivera12/BlazorDownloadFile</RepositoryUrl>
+    <RepositoryType>blazor, c#</RepositoryType>
+    <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
+    <Authors>Anthony G. Rivera Cosme</Authors>
+    <Company>Anthony G. Rivera Cosme</Company>
   </PropertyGroup>
 
 
