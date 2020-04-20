@@ -1,5 +1,9 @@
 # BlazorDownloadFile
-Blazor download files to the browser from c#.
+Blazor download files to the browser from c#. 
+
+This packages was inspired of blazor lacks of built-in binary data downloader. 
+
+This packages makes that posible with a little js interop.
 
 ## Installation
 
