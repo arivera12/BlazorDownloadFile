@@ -1,9 +1,13 @@
 # BlazorDownloadFile
-Blazor download files to the browser from c#.
+Blazor download files to the browser from c#. 
+
+This packages was inspired of blazor lacks of built-in binary data downloader. 
+
+This packages makes that posible with a little js interop.
 
 ## Installation
 
-`Install-Package BlazorDownloadFile -Version 1.0.0`
+`Install-Package BlazorDownloadFile -Version 1.0.2`
 
 ## Add reference in _Imports.razor
 
@@ -19,15 +23,15 @@ Blazor download files to the browser from c#.
 
 ## Usage
 
-`[Inject] BlazorDownloadFile BlazorDownloadFile { get; set; }`
+`[Inject] BlazorDownloadFileService BlazorDownloadFileService { get; set; }`
 
 #### Dowload File Methods
 
-`BlazorDownloadFile.DownloadFile(string fileName, string bytesBase64)`
+`BlazorDownloadFileService.DownloadFile(string fileName, string bytesBase64)`
 
-`BlazorDownloadFile.DownloadFile(string fileName, byte[] bytes)`
+`BlazorDownloadFileService.DownloadFile(string fileName, byte[] bytes)`
 
-`BlazorDownloadFile.DownloadFile(string fileName, Stream stream)`
+`BlazorDownloadFileService.DownloadFile(string fileName, Stream stream)`
 
 ## License
 MIT
