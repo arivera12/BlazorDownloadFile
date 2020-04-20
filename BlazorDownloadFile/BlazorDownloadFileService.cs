@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace BlazorDownloadFile
 {
-    public class BlazorDownloadFile
+    public class BlazorDownloadFileService
     {
         protected IJSRuntime JSRuntime { get; set; }
-        public BlazorDownloadFile(IJSRuntime jSRuntime)
+        public BlazorDownloadFileService(IJSRuntime jSRuntime)
         {
             JSRuntime = jSRuntime;
         }

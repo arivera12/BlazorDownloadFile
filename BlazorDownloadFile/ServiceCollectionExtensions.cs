@@ -10,7 +10,7 @@ namespace BlazorDownloadFile
             return services.AddSingleton((service) =>
             {
                 var JSRuntime = service.GetRequiredService<IJSRuntime>();
-                return new BlazorDownloadFile(JSRuntime);
+                return new BlazorDownloadFileService(JSRuntime);
             });
         }
     }
