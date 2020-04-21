@@ -1,4 +1,4 @@
-window.dowloadFile = function (filename, bytesBase64) {
+window.downloadFile = function (filename, bytesBase64) {
     var link = document.createElement('a');
     link.download = filename;
     link.style.display = "none";
