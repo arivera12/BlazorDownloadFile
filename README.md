@@ -7,7 +7,7 @@ This packages makes that posible with a little js interop.
 
 ## Installation
 
-`Install-Package BlazorDownloadFile -Version 1.0.2`
+`Install-Package BlazorDownloadFile -Version 1.0.3`
 
 ## Add reference in _Imports.razor
 
