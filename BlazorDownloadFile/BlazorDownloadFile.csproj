@@ -8,13 +8,13 @@
     <PackageProjectUrl>https://github.com/arivera12/BlazorDownloadFile</PackageProjectUrl>
     <RepositoryUrl>https://github.com/arivera12/BlazorDownloadFile</RepositoryUrl>
     <RepositoryType>blazor, c#</RepositoryType>
-    <PackageReleaseNotes>Renamed BlazorDownloadFile to BlazorDownloadFileService to prevent namespace name colision.</PackageReleaseNotes>
+    <PackageReleaseNotes>Merge Pull Request: Minor but critical bug fixes #1 by @RyouBakura .</PackageReleaseNotes>
     <Authors>Anthony G. Rivera Cosme</Authors>
     <Company>Anthony G. Rivera Cosme</Company>
     <Copyright>Anthony G. Rivera Cosme</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
 
