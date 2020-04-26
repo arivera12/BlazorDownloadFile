@@ -25,13 +25,27 @@ This packages makes that posible with a little js interop.
 
 `[Inject] BlazorDownloadFileService BlazorDownloadFileService { get; set; }`
 
-#### Dowload File Methods
+### BlazorDownloadFileService Methods
 
-`BlazorDownloadFileService.DownloadFile(string fileName, string bytesBase64)`
+<table>
+	<tr>
+		<th>BlazorDownloadFileService</th>
+		<th>Method</th>
+	</tr>
+	<tr>
+		<td>DownloadFile From Base 64 string</td>
+		<td>BlazorDownloadFileService.DownloadFile(string fileName, string bytesBase64)</td>
+	</tr>
+	<tr>
+		<td>DownloadFile From Byte Array</td>
+		<td>BlazorDownloadFileService.DownloadFile(string fileName, byte[] bytes)</td>
+	</tr>
+	<tr>
+		<td>DownloadFile From Stream</td>
+		<td>BlazorDownloadFileService.DownloadFile(string fileName, Stream stream)</td>
+	</tr>
+</table>
 
-`BlazorDownloadFileService.DownloadFile(string fileName, byte[] bytes)`
-
-`BlazorDownloadFileService.DownloadFile(string fileName, Stream stream)`
 
 ## License
 MIT
