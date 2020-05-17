@@ -5,9 +5,11 @@ This packages was inspired of blazor lacks of built-in binary data downloader.
 
 This packages makes that posible with a little js interop.
 
+
+
 ## Installation
 
-`Install-Package BlazorDownloadFile -Version 1.0.5`
+`Install-Package BlazorDownloadFile -Version 1.0.6`
 
 ## Add reference in _Imports.razor
 
@@ -17,9 +19,13 @@ This packages makes that posible with a little js interop.
 
 `services.AddBlazorDownloadFile();`
 
-## Add javascript library reference in your index.html
+## ~~Add javascript library reference in your index.html~~
 
-`<script src="_content/BlazorDownloadFile/blazorDownloadFile.js"></script>`
+~~`<script src="_content/BlazorDownloadFile/blazorDownloadFile.js"></script>`~~
+
+## Zero (0) Javascript Library Dependency
+
+Since version 1.0.6 the js library has been removed and integrated inside the library making BlazorDownloadFile free of any js library dependency.
 
 ## Usage
 
