@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BlazorDownloadFile
 {
-    public class BlazorDownloadFileService
+    public class BlazorDownloadFileService : IBlazorDownloadFileService
     {
         /// <summary>
         /// The javascript runtime
