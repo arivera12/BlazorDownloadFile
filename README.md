@@ -1,11 +1,10 @@
 # BlazorDownloadFile
-Blazor download files to the browser from c#. 
+
+Blazor download files to the browser from c# without any JavaScript library or dependency.
 
 This packages was inspired of blazor lacks of built-in binary data downloader. 
 
-This packages makes that posible with a little js interop.
-
-
+This packages makes that posible with a little js interop but without any external JavaScript library or dependency.
 
 ## Installation
 
@@ -25,7 +24,7 @@ This packages makes that posible with a little js interop.
 
 ## Zero (0) Javascript Library Dependency
 
-Since version 1.0.6 the js library has been removed and integrated inside the library making BlazorDownloadFile free of any js library dependency.
+Since version 1.0.6 the JavaScript library have been removed as a dependency and have been integrated.
 
 ## Usage
 
