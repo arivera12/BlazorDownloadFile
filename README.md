@@ -6,6 +6,8 @@ This packages was inspired of blazor lacks of built-in binary data downloader.
 
 This packages makes that posible with a little js interop but without any external JavaScript Library Reference or Dependency.
 
+[![Nuget](https://buildstats.info/nuget/BlazorDownloadFile?v=1.0.6)](https://www.nuget.org/packages/BlazorDownloadFile)
+
 ## Installation
 
 `Install-Package BlazorDownloadFile -Version 1.0.6`
