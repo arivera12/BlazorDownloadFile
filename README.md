@@ -22,7 +22,7 @@ This packages makes that posible with a little js interop but without any extern
 
 ## No Javascript Library Reference Dependency
 
-Since version 1.0.6 the JavaScript library have been removed as a dependency and have been integrated.
+Since version 1.0.6 the JavaScript library have been removed as a dependency.
 
 ## Usage
 
