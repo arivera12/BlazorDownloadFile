@@ -10,11 +10,7 @@ This packages makes that posible with a little js interop but without any extern
 
 `Install-Package BlazorDownloadFile -Version 1.0.6`
 
-## Add reference in _Imports.razor
-
-`@using BlazorDownloadFile`
-
-## Add the service in your services method
+## Register the service in your services method
 
 `services.AddBlazorDownloadFile();`
 
