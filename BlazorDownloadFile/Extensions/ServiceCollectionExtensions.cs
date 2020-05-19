@@ -12,11 +12,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         public static IServiceCollection AddBlazorDownloadFile(this IServiceCollection services)
         {
-            return services.AddSingleton((service) =>
-            {
-                var JSRuntime = service.GetRequiredService<IJSRuntime>();
-                return new BlazorDownloadFileService(JSRuntime);
-            });
+            return services.AddScoped<IBlazorDownloadFileService, BlazorDownloadFileService>();
         }
     }
 }

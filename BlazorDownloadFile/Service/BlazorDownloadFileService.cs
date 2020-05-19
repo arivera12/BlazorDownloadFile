@@ -5,20 +5,14 @@ using System.Threading.Tasks;
 
 namespace BlazorDownloadFile
 {
-    public class BlazorDownloadFileService : IBlazorDownloadFileService
+    internal class BlazorDownloadFileService : IBlazorDownloadFileService
     {
         /// <summary>
         /// The javascript runtime
         /// </summary>
         protected IJSRuntime JSRuntime { get; set; }
         /// <summary>
-        /// Default constructor
-        /// </summary>
-        public BlazorDownloadFileService()
-        {
-        }
-        /// <summary>
-        /// Constructor witht he javascript runtime
+        /// Constructor with the javascript runtime from IOC
         /// </summary>
         /// <param name="jSRuntime">The javascript runtime</param>
         public BlazorDownloadFileService(IJSRuntime jSRuntime)

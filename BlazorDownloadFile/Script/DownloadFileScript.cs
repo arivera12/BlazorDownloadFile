@@ -1,6 +1,6 @@
 ﻿namespace BlazorDownloadFile
 {
-    public class DownloadFileScript
+    internal class DownloadFileScript
     {
         /// <summary>
         /// The download script of the file
