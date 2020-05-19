@@ -18,13 +18,11 @@ This packages makes that posible with a little js interop but without any extern
 
 `services.AddBlazorDownloadFile();`
 
-## ~~Add javascript library reference in your index.html~~
+## No javascript library reference dependency
 
-~~`<script src="_content/BlazorDownloadFile/blazorDownloadFile.js"></script>`~~
+Since version 1.0.6. 
 
-## No Javascript Library Reference Dependency
-
-Since version 1.0.6.
+Please updgrade to latest version if you are using older versions.
 
 ## Usage
 
