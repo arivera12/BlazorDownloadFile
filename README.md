@@ -1,6 +1,6 @@
 # BlazorDownloadFile
 
-[![Nuget](https://buildstats.info/nuget/BlazorDownloadFile?v=1.0.6)](https://www.nuget.org/packages/BlazorDownloadFile)
+[![Nuget](https://buildstats.info/nuget/BlazorDownloadFile?v=1.0.7)](https://www.nuget.org/packages/BlazorDownloadFile)
 
 ![](BlazorDownloadFileDemo.gif)
 
@@ -12,7 +12,7 @@ This packages makes that posible with a little js interop but without any extern
 
 ## Installation
 
-`Install-Package BlazorDownloadFile -Version 1.0.6`
+`Install-Package BlazorDownloadFile -Version 1.0.7`
 
 ## Register the service in your services method
 
@@ -24,11 +24,11 @@ This packages makes that posible with a little js interop but without any extern
 
 ## No Javascript Library Reference Dependency
 
-Since version 1.0.6 the JavaScript library have been removed as a dependency.
+Since version 1.0.6.
 
 ## Usage
 
-`[Inject] BlazorDownloadFileService BlazorDownloadFileService { get; set; }`
+`[Inject] IBlazorDownloadFileService BlazorDownloadFileService { get; set; }`
 
 ### BlazorDownloadFileService Methods
 
