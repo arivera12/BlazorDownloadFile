@@ -1,5 +1,7 @@
 # BlazorDownloadFile
 
+[![Nuget](https://buildstats.info/nuget/BlazorDownloadFile?v=1.0.7)](https://www.nuget.org/packages/BlazorDownloadFile)
+
 ![](BlazorDownloadFileDemo.gif)
 
 Blazor download files to the browser from c# without any JavaScript library or dependency.
@@ -8,27 +10,23 @@ This packages was inspired of blazor lacks of built-in binary data downloader.
 
 This packages makes that posible with a little js interop but without any external JavaScript Library Reference or Dependency.
 
-[![Nuget](https://buildstats.info/nuget/BlazorDownloadFile?v=1.0.6)](https://www.nuget.org/packages/BlazorDownloadFile)
-
 ## Installation
 
-`Install-Package BlazorDownloadFile -Version 1.0.6`
+`Install-Package BlazorDownloadFile -Version 1.0.7`
 
 ## Register the service in your services method
 
 `services.AddBlazorDownloadFile();`
 
-## ~~Add javascript library reference in your index.html~~
+## No javascript library reference dependency
 
-~~`<script src="_content/BlazorDownloadFile/blazorDownloadFile.js"></script>`~~
+Since version 1.0.6. 
 
-## No Javascript Library Reference Dependency
-
-Since version 1.0.6 the JavaScript library have been removed as a dependency.
+Please updgrade to latest version if you are using older versions.
 
 ## Usage
 
-`[Inject] BlazorDownloadFileService BlazorDownloadFileService { get; set; }`
+`[Inject] IBlazorDownloadFileService BlazorDownloadFileService { get; set; }`
 
 ### BlazorDownloadFileService Methods
 
