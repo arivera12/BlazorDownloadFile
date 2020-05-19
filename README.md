@@ -1,5 +1,7 @@
 # BlazorDownloadFile
 
+![](BlazorDownloadFileDemo.gif)
+
 Blazor download files to the browser from c# without any JavaScript library or dependency.
 
 This packages was inspired of blazor lacks of built-in binary data downloader. 
