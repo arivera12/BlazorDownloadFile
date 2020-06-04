@@ -14,20 +14,20 @@ namespace BlazorDownloadFile
         /// <param name="fileName">The filename</param>
         /// <param name="bytesBase64">The bytes base 64 of the file</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, string bytesBase64);
+        Task DownloadFile(string fileName, string bytesBase64, string contentType = "application/octet-stream");
         /// <summary>
         /// Download a file from blazor context to the browser.
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="bytes">The bytes of the file</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, byte[] bytes);
+        Task DownloadFile(string fileName, byte[] bytes, string contentType = "application/octet-stream");
         /// <summary>
         ///  Download a file from blazor context to the browser.
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="stream">The stream of the file</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, Stream stream);
+        Task DownloadFile(string fileName, Stream stream, string contentType = "application/octet-stream");
     }
 }

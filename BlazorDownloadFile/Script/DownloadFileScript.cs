@@ -8,7 +8,7 @@
         /// <param name="fileName"></param>
         /// <param name="bytesBase64"></param>
         /// <returns></returns>
-        public static string DownloadFileJavascriptScript(string fileName, string bytesBase64)
+        public static string DownloadFileJavascriptScript(string fileName, string bytesBase64, string contentType)
         {
             return $@"
 if (navigator.msSaveBlob) 
@@ -19,7 +19,7 @@ if (navigator.msSaveBlob)
     for (var i = 0; i < data.length; i++) {{
         bytes[i] = data.charCodeAt(i);
     }}
-    var blob = new Blob([bytes.buffer], {{ type: ""application/octet-stream"" }});
+    var blob = new Blob([bytes.buffer], {{ type: ""{contentType}"" }});
     navigator.msSaveBlob(blob, ""{fileName}"");
 }}
 else 
@@ -27,7 +27,7 @@ else
     var link = document.createElement('a');
     link.download = ""{fileName}"";
     link.style.display = ""none"";
-    link.href = ""data:application/octet-stream;base64,"" + ""{bytesBase64}"";
+    link.href = ""data:{contentType};base64,"" + ""{bytesBase64}"";
     document.body.appendChild(link); // Needed for Firefox
     link.click();
     document.body.removeChild(link);

@@ -25,9 +25,9 @@ namespace BlazorDownloadFile
         /// <param name="fileName">The filename</param>
         /// <param name="bytesBase64">The bytes base 64 of the file</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, string bytesBase64)
+        public async Task DownloadFile(string fileName, string bytesBase64, string contentType = "application/octet-stream")
         {
-            await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScript(fileName, bytesBase64));
+            await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScript(fileName, bytesBase64, contentType));
         }
         /// <summary>
         /// Download a file from blazor context to the browser
@@ -35,9 +35,9 @@ namespace BlazorDownloadFile
         /// <param name="fileName">The filename</param>
         /// <param name="bytes">The bytes of the file</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, byte[] bytes)
+        public async Task DownloadFile(string fileName, byte[] bytes, string contentType = "application/octet-stream")
         {
-            await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScript(fileName, Convert.ToBase64String(bytes)));
+            await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScript(fileName, Convert.ToBase64String(bytes), contentType));
         }
         /// <summary>
         ///  Download a file from blazor context to the browser
@@ -45,9 +45,9 @@ namespace BlazorDownloadFile
         /// <param name="fileName">The filename</param>
         /// <param name="stream">The stream of the file</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, Stream stream)
+        public async Task DownloadFile(string fileName, Stream stream, string contentType = "application/octet-stream")
         {
-            await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScript(fileName, Convert.ToBase64String(stream.ToByteArray())));
+            await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScript(fileName, Convert.ToBase64String(stream.ToByteArray()), contentType));
         }
     }
 }
