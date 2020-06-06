@@ -2,6 +2,8 @@
 
 [![Nuget](https://buildstats.info/nuget/BlazorDownloadFile?v=1.0.10)](https://www.nuget.org/packages/BlazorDownloadFile)
 
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RSE2NMEG3F7QU&source=url)
+
 ![](BlazorDownloadFileDemo.gif)
 
 Blazor download files to the browser from c# without any JavaScript library or dependency.
