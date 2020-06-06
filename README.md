@@ -1,8 +1,13 @@
 # BlazorDownloadFile
 
-[![Nuget](https://buildstats.info/nuget/BlazorDownloadFile?v=1.0.10)](https://www.nuget.org/packages/BlazorDownloadFile)
-
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RSE2NMEG3F7QU&source=url)
+<p>
+    	<a href="https://www.nuget.org/packages/BlazorDownloadFile">
+	    <img src="https://buildstats.info/nuget/BlazorDownloadFile?v=1.0.10" />
+	</a>
+	<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RSE2NMEG3F7QU&source=url">
+	    <img src="https://img.shields.io/badge/Donate-PayPal-green.svg" />
+	</a>
+</p>
 
 ![](BlazorDownloadFileDemo.gif)
 
