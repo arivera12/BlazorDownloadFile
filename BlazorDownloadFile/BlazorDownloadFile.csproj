@@ -8,13 +8,15 @@
     <PackageProjectUrl>https://github.com/arivera12/BlazorDownloadFile</PackageProjectUrl>
     <RepositoryUrl>https://github.com/arivera12/BlazorDownloadFile</RepositoryUrl>
     <RepositoryType>blazor, c#</RepositoryType>
-    <PackageReleaseNotes>Added optional parameter contentType with default value application/octet-stream.</PackageReleaseNotes>
+    <PackageReleaseNotes>Renamed DownloadFileAsText -&gt; DownloadFileFromText</PackageReleaseNotes>
     <Authors>Anthony G. Rivera Cosme</Authors>
     <Company>Anthony G. Rivera Cosme</Company>
     <Copyright>Anthony G. Rivera Cosme</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <Version>1.0.8</Version>
+    <Version>1.0.10</Version>
+    <AssemblyVersion>1.0.10.0</AssemblyVersion>
+    <FileVersion>1.0.10.0</FileVersion>
   </PropertyGroup>
 
 

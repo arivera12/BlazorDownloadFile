@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29911.98
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDownloadFile", "BlazorDownloadFile\BlazorDownloadFile.csproj", "{A1DFEFC8-8C93-4360-8A63-BD003D4FF85C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorDownloadFile.Demo", "BlazorDownloadFile.Demo\BlazorDownloadFile.Demo.csproj", "{2A36B29C-A4B5-4FBA-B029-F13D6D5FD414}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDownloadFile.Demo", "BlazorDownloadFile.Demo\BlazorDownloadFile.Demo.csproj", "{2A36B29C-A4B5-4FBA-B029-F13D6D5FD414}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
