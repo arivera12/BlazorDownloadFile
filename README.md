@@ -1,6 +1,13 @@
 # BlazorDownloadFile
 
-[![Nuget](https://buildstats.info/nuget/BlazorDownloadFile?v=1.0.7)](https://www.nuget.org/packages/BlazorDownloadFile)
+<p>
+    	<a href="https://www.nuget.org/packages/BlazorDownloadFile">
+	    <img src="https://buildstats.info/nuget/BlazorDownloadFile?v=1.0.11" />
+	</a>
+	<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RSE2NMEG3F7QU&source=url">
+	    <img src="https://img.shields.io/badge/Donate-PayPal-green.svg" />
+	</a>
+</p>
 
 ![](BlazorDownloadFileDemo.gif)
 
@@ -8,7 +15,7 @@ Blazor download files to the browser from c# without any JavaScript library or d
 
 ## Installation
 
-`Install-Package BlazorDownloadFile -Version 1.0.8`
+`Install-Package BlazorDownloadFile -Version 1.0.11`
 
 ## Register the service in your services method
 
@@ -32,16 +39,20 @@ Please updgrade to latest version if you are using older versions.
 		<th>Method</th>
 	</tr>
 	<tr>
-		<td>DownloadFile From Base 64 string</td>
+		<td>Download File From Base 64 string</td>
 		<td>BlazorDownloadFileService.DownloadFile(string fileName, string bytesBase64, string contentType = "application/octet-stream")</td>
 	</tr>
 	<tr>
-		<td>DownloadFile From Byte Array</td>
+		<td>Download File From Byte Array</td>
 		<td>BlazorDownloadFileService.DownloadFile(string fileName, byte[] bytes, string contentType = "application/octet-stream")</td>
 	</tr>
 	<tr>
-		<td>DownloadFile From Stream</td>
+		<td>Download File From Stream</td>
 		<td>BlazorDownloadFileService.DownloadFile(string fileName, Stream stream, string contentType = "application/octet-stream")</td>
+	</tr>
+	<tr>
+		<td>Download File From Text</td>
+		<td>BlazorDownloadFileService.DownloadFileFromText(string fileName, string plainText, string contentType = "text/plain")</td>
 	</tr>
 </table>
 
