@@ -8,15 +8,17 @@
     <PackageProjectUrl>https://github.com/arivera12/BlazorDownloadFile</PackageProjectUrl>
     <RepositoryUrl>https://github.com/arivera12/BlazorDownloadFile</RepositoryUrl>
     <RepositoryType>blazor, c#</RepositoryType>
-    <PackageReleaseNotes>Renamed DownloadFileAsText -&gt; DownloadFileFromText</PackageReleaseNotes>
+    <PackageReleaseNotes>Fixes:
+https://github.com/arivera12/BlazorDownloadFile/issues/6
+https://github.com/arivera12/BlazorDownloadFile/issues/9</PackageReleaseNotes>
     <Authors>Anthony G. Rivera Cosme</Authors>
     <Company>Anthony G. Rivera Cosme</Company>
     <Copyright>Anthony G. Rivera Cosme</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <Version>1.0.10</Version>
-    <AssemblyVersion>1.0.10.0</AssemblyVersion>
-    <FileVersion>1.0.10.0</FileVersion>
+    <Version>1.0.11</Version>
+    <AssemblyVersion>1.0.11.0</AssemblyVersion>
+    <FileVersion>1.0.11.0</FileVersion>
   </PropertyGroup>
 
 
