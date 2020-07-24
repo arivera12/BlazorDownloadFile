@@ -51,9 +51,9 @@ namespace BlazorDownloadFile
         /// <param name="stream">The stream of the file</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public ValueTask DownloadFile(string fileName, Stream stream, string contentType = "application/octet-stream")
+        public async ValueTask DownloadFile(string fileName, Stream stream, string contentType = "application/octet-stream")
         {
-            return JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScriptBase64String(fileName, Convert.ToBase64String(stream.ToByteArray()), contentType));
+            await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScriptBase64String(fileName, Convert.ToBase64String(await stream.ToByteArrayAsync()), contentType));
         }
         /// <summary>
         /// Download a file from blazor context to the brower
@@ -117,17 +117,13 @@ namespace BlazorDownloadFile
             var pendingBytesToRead = 0;
             do
             {
-                pendingBytesToRead = stream.Read(buffer, 0, bufferSize);
+                pendingBytesToRead = await stream.ReadAsync(buffer, 0, bufferSize);
                 foreach (var partFile in Partition(buffer, bufferSize))
                 {
                     //await JSRuntime.InvokeVoidAsync("_blazorDownloadFileuint8arrayBufferPush", partFile.ToArray());
                     await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.AddFileBufferDoubledBase64StringPartition(Convert.ToBase64String(partFile.ToArray())));
                 }
             } while (pendingBytesToRead > 0);
-            stream.Flush();
-            stream.Close();
-            stream.Dispose();
-            GC.Collect(1, GCCollectionMode.Forced);
             //await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScriptByteArrayPartitioned(fileName, contentType));
             await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScriptBase64StringPartitioned(fileName, contentType));
         }

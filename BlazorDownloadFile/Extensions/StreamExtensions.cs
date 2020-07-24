@@ -1,5 +1,5 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
+using System.Threading.Tasks;
 
 namespace BlazorDownloadFile
 {
@@ -12,12 +12,22 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         internal static byte[] ToByteArray(this Stream stream)
         {
-            var bytes = (stream as MemoryStream).ToArray();
-            stream.Flush();
-            stream.Close();
-            stream.Dispose();
-            GC.Collect(1, GCCollectionMode.Forced);
-            return bytes;
+            var streamLength = (int)stream.Length;
+            var data = new byte[streamLength];
+            stream.Read(data, 0, streamLength);
+            return data;
+        }
+        /// <summary>
+        /// Converts a stream into a byte array
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        /// <returns></returns>
+        internal static async Task<byte[]> ToByteArrayAsync(this Stream stream)
+        {
+            var streamLength = (int)stream.Length;
+            var data = new byte[streamLength];
+            await stream.ReadAsync(data, 0, streamLength);
+            return data;
         }
     }
 }
