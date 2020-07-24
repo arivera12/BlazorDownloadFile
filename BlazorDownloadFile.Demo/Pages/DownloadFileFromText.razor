@@ -1,7 +1,7 @@
 ﻿@page "/DownloadFileFromText"
 <h1>Download File From Text</h1>
 
-<button @onclick=@(async () => await BlazorDownloadFileService.DownloadFileFromText("test.json", json))>Dowload json from text</button>
+<button @onclick=@(async () => await BlazorDownloadFileService.DownloadFileFromText("test.json", json, "application/octet-stream"))>Dowload json from text</button>
 <br />
 <br />
 <pre>@json</pre>
