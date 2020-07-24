@@ -2,7 +2,7 @@
 
 <p>
     	<a href="https://www.nuget.org/packages/BlazorDownloadFile">
-	    <img src="https://buildstats.info/nuget/BlazorDownloadFile?v=1.0.11" />
+	    <img src="https://buildstats.info/nuget/BlazorDownloadFile?v=1.0.12" />
 	</a>
 	<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RSE2NMEG3F7QU&source=url">
 	    <img src="https://img.shields.io/badge/Donate-PayPal-green.svg" />
@@ -15,7 +15,7 @@ Blazor download files to the browser from c# without any JavaScript library or d
 
 ## Installation
 
-`Install-Package BlazorDownloadFile -Version 1.0.11`
+`Install-Package BlazorDownloadFile -Version 1.0.12`
 
 ## Register the service in your services method
 
