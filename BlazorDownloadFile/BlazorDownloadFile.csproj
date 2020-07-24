@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -9,16 +9,15 @@
     <RepositoryUrl>https://github.com/arivera12/BlazorDownloadFile</RepositoryUrl>
     <RepositoryType>blazor, c#</RepositoryType>
     <PackageReleaseNotes>Fixes:
-https://github.com/arivera12/BlazorDownloadFile/issues/6
 https://github.com/arivera12/BlazorDownloadFile/issues/9</PackageReleaseNotes>
     <Authors>Anthony G. Rivera Cosme</Authors>
     <Company>Anthony G. Rivera Cosme</Company>
     <Copyright>Anthony G. Rivera Cosme</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <Version>1.0.11</Version>
-    <AssemblyVersion>1.0.11.0</AssemblyVersion>
-    <FileVersion>1.0.11.0</FileVersion>
+    <Version>1.0.12</Version>
+    <AssemblyVersion>1.0.12.0</AssemblyVersion>
+    <FileVersion>1.0.12.0</FileVersion>
   </PropertyGroup>
 
 
