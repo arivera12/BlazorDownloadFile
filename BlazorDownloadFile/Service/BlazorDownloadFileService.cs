@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -93,7 +94,7 @@ namespace BlazorDownloadFile
             return JSRuntime.InvokeVoidAsync("eval", timeOut, DownloadFileScript.DownloadFileJavascriptScriptBase64String(fileName, Convert.ToBase64String(bytes), contentType));
         }
         /// <summary>
-        ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
+        ///  Download a file from blazor context to the browser.
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="stream">The stream of the file</param>
@@ -104,7 +105,7 @@ namespace BlazorDownloadFile
             await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScriptBase64String(fileName, Convert.ToBase64String(await stream.ToByteArrayAsync()), contentType));
         }
         /// <summary>
-        ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
+        ///  Download a file from blazor context to the browser.
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="stream">The stream of the file</param>
@@ -117,7 +118,7 @@ namespace BlazorDownloadFile
             await JSRuntime.InvokeVoidAsync("eval", cancellationTokenJavaScriptInterop, DownloadFileScript.DownloadFileJavascriptScriptBase64String(fileName, Convert.ToBase64String(await stream.ToByteArrayAsync(cancellationTokenBytesRead)), contentType));
         }
         /// <summary>
-        ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
+        ///  Download a file from blazor context to the browser.
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="stream">The stream of the file</param>
@@ -230,11 +231,9 @@ namespace BlazorDownloadFile
             await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.InitializeBlazorDownloadFileBuffer());
             foreach (var partFile in Partition(bytes, bufferSize))
             {
-                //await JSRuntime.InvokeVoidAsync("_blazorDownloadFileuint8arrayBufferPush", partFile.ToArray());
-                await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.AddFileBufferDoubledBase64StringPartition(Convert.ToBase64String(partFile.ToArray())));
+                await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", partFile);
             }
-            //await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScriptByteArrayPartitioned(fileName, contentType));
-            await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScriptBase64StringPartitioned(fileName, contentType));
+            await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScriptByteArrayPartitioned(fileName, contentType));
         }
         /// <summary>
         /// Download a file from blazor context to the browser
@@ -250,11 +249,9 @@ namespace BlazorDownloadFile
             await JSRuntime.InvokeVoidAsync("eval", cancellationToken, DownloadFileScript.InitializeBlazorDownloadFileBuffer());
             foreach (var partFile in Partition(bytes, bufferSize))
             {
-                //await JSRuntime.InvokeVoidAsync("_blazorDownloadFileuint8arrayBufferPush", partFile.ToArray());
-                await JSRuntime.InvokeVoidAsync("eval", cancellationToken, DownloadFileScript.AddFileBufferDoubledBase64StringPartition(Convert.ToBase64String(partFile.ToArray())));
+                await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationToken, partFile);
             }
-            //await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScriptByteArrayPartitioned(fileName, contentType));
-            await JSRuntime.InvokeVoidAsync("eval", cancellationToken, DownloadFileScript.DownloadFileJavascriptScriptBase64StringPartitioned(fileName, contentType));
+            await JSRuntime.InvokeVoidAsync("eval", cancellationToken, DownloadFileScript.DownloadFileJavascriptScriptByteArrayPartitioned(fileName, contentType));
         }
         /// <summary>
         /// Download a file from blazor context to the browser
@@ -270,11 +267,9 @@ namespace BlazorDownloadFile
             await JSRuntime.InvokeVoidAsync("eval", timeOut, DownloadFileScript.InitializeBlazorDownloadFileBuffer());
             foreach (var partFile in Partition(bytes, bufferSize))
             {
-                //await JSRuntime.InvokeVoidAsync("_blazorDownloadFileuint8arrayBufferPush", partFile.ToArray());
-                await JSRuntime.InvokeVoidAsync("eval", timeOut, DownloadFileScript.AddFileBufferDoubledBase64StringPartition(Convert.ToBase64String(partFile.ToArray())));
+                await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOut, partFile);
             }
-            //await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScriptByteArrayPartitioned(fileName, contentType));
-            await JSRuntime.InvokeVoidAsync("eval", timeOut, DownloadFileScript.DownloadFileJavascriptScriptBase64StringPartitioned(fileName, contentType));
+            await JSRuntime.InvokeVoidAsync("eval", timeOut, DownloadFileScript.DownloadFileJavascriptScriptByteArrayPartitioned(fileName, contentType));
         }
         /// <summary>
         ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
@@ -294,12 +289,10 @@ namespace BlazorDownloadFile
                 pendingBytesToRead = await stream.ReadAsync(buffer, 0, bufferSize);
                 foreach (var partFile in Partition(buffer, bufferSize))
                 {
-                    //await JSRuntime.InvokeVoidAsync("_blazorDownloadFileuint8arrayBufferPush", partFile.ToArray());
-                    await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.AddFileBufferDoubledBase64StringPartition(Convert.ToBase64String(partFile.ToArray())));
+                    await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", partFile);
                 }
             } while (pendingBytesToRead > 0);
-            //await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScriptByteArrayPartitioned(fileName, contentType));
-            await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScriptBase64StringPartitioned(fileName, contentType));
+            await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScriptByteArrayPartitioned(fileName, contentType));
         }
         /// <summary>
         ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
@@ -321,12 +314,10 @@ namespace BlazorDownloadFile
                 pendingBytesToRead = await stream.ReadAsync(buffer, 0, bufferSize, cancellationTokenBytesRead);
                 foreach (var partFile in Partition(buffer, bufferSize))
                 {
-                    //await JSRuntime.InvokeVoidAsync("_blazorDownloadFileuint8arrayBufferPush", partFile.ToArray());
-                    await JSRuntime.InvokeVoidAsync("eval", timeOutJavaScriptInterop, DownloadFileScript.AddFileBufferDoubledBase64StringPartition(Convert.ToBase64String(partFile.ToArray())));
+                    await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOutJavaScriptInterop, partFile);
                 }
             } while (pendingBytesToRead > 0);
-            //await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScriptByteArrayPartitioned(fileName, contentType));
-            await JSRuntime.InvokeVoidAsync("eval", timeOutJavaScriptInterop, DownloadFileScript.DownloadFileJavascriptScriptBase64StringPartitioned(fileName, contentType));
+            await JSRuntime.InvokeVoidAsync("eval", timeOutJavaScriptInterop, DownloadFileScript.DownloadFileJavascriptScriptByteArrayPartitioned(fileName, contentType));
         }
         /// <summary>
         ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
@@ -348,12 +339,10 @@ namespace BlazorDownloadFile
                 pendingBytesToRead = await stream.ReadAsync(buffer, 0, bufferSize, cancellationTokenBytesRead);
                 foreach (var partFile in Partition(buffer, bufferSize))
                 {
-                    //await JSRuntime.InvokeVoidAsync("_blazorDownloadFileuint8arrayBufferPush", partFile.ToArray());
-                    await JSRuntime.InvokeVoidAsync("eval", timeOutJavaScriptInterop, DownloadFileScript.AddFileBufferDoubledBase64StringPartition(Convert.ToBase64String(partFile.ToArray())));
+                    await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOutJavaScriptInterop, partFile);
                 }
             } while (pendingBytesToRead > 0);
-            //await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScriptByteArrayPartitioned(fileName, contentType));
-            await JSRuntime.InvokeVoidAsync("eval", timeOutJavaScriptInterop, DownloadFileScript.DownloadFileJavascriptScriptBase64StringPartitioned(fileName, contentType));
+            await JSRuntime.InvokeVoidAsync("eval", timeOutJavaScriptInterop, DownloadFileScript.DownloadFileJavascriptScriptByteArrayPartitioned(fileName, contentType));
         }
         /// <summary>
         /// Download a file from blazor context to the brower

@@ -8,8 +8,8 @@
     <PackageProjectUrl>https://github.com/arivera12/BlazorDownloadFile</PackageProjectUrl>
     <RepositoryUrl>https://github.com/arivera12/BlazorDownloadFile</RepositoryUrl>
     <RepositoryType>blazor, c#</RepositoryType>
-    <PackageReleaseNotes>Fixes:
-https://github.com/arivera12/BlazorDownloadFile/issues/9</PackageReleaseNotes>
+    <PackageReleaseNotes>V.1.0.13 - DONT DELETE THIS AND APPEND NEW STUFF WORKED
+Added timeout and cancellation token overload methods when reading bytes from stream and javascript interop. Added stream position reset to 0 when reading the entire buffer. Buffered dowloads are now working, Streams overload methods still needs some work because its appending extra bytes but atleast files are working as expected.</PackageReleaseNotes>
     <Authors>Anthony G. Rivera Cosme</Authors>
     <Company>Anthony G. Rivera Cosme</Company>
     <Copyright>Anthony G. Rivera Cosme</Copyright>

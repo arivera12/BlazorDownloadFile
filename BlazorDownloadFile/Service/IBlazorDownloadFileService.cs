@@ -63,7 +63,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         ValueTask DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, string contentType = "application/octet-stream");
         /// <summary>
-        ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
+        ///  Download a file from blazor context to the browser.
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="stream">The stream of the file</param>
@@ -71,7 +71,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         ValueTask DownloadFile(string fileName, Stream stream, string contentType = "application/octet-stream");
         /// <summary>
-        ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
+        ///  Download a file from blazor context to the browser.
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="stream">The stream of the file</param>
@@ -81,7 +81,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, string contentType = "application/octet-stream");
         /// <summary>
-        ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
+        ///  Download a file from blazor context to the browser.
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="stream">The stream of the file</param>

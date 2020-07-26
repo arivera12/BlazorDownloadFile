@@ -15,6 +15,7 @@ namespace BlazorDownloadFile
         {
             var streamLength = (int)stream.Length;
             var data = new byte[streamLength];
+            stream.Position = 0;
             stream.Read(data, 0, streamLength);
             return data;
         }
@@ -27,6 +28,7 @@ namespace BlazorDownloadFile
         {
             var streamLength = (int)stream.Length;
             var data = new byte[streamLength];
+            stream.Position = 0;
             await stream.ReadAsync(data, 0, streamLength);
             return data;
         }
@@ -40,6 +42,7 @@ namespace BlazorDownloadFile
         {
             var streamLength = (int)stream.Length;
             var data = new byte[streamLength];
+            stream.Position = 0;
             await stream.ReadAsync(data, 0, streamLength, cancellationToken);
             return data;
         }
