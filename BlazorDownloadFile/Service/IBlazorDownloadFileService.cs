@@ -193,7 +193,7 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken timeOutJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream");
+        ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream");
         /// <summary>
         ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
         /// </summary>

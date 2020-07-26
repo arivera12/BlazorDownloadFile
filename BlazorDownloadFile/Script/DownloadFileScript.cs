@@ -39,9 +39,12 @@ else
     var _blazorDownloadFileLink = document.createElement(""a"");
     _blazorDownloadFileLink.download = ""{fileName}"";
     _blazorDownloadFileLink.style.display = ""none"";
-    _blazorDownloadFileLink.href = URL.createObjectURL(_blazorDownloadFileBlob);
+    var _blazorDownloadFileObjectUrl = URL.createObjectURL(_blazorDownloadFileBlob); 
+    _blazorDownloadFileLink.href = _blazorDownloadFileObjectUrl;
     document.body.appendChild(_blazorDownloadFileLink); // Needed for Firefox
     _blazorDownloadFileLink.click();
+    URL.revokeObjectURL(_blazorDownloadFileObjectUrl);
+    _blazorDownloadFileObjectUrl = null;
     _blazorDownloadFileBlob = null;
     document.body.removeChild(_blazorDownloadFileLink);
     _blazorDownloadFileLink = null;
@@ -86,9 +89,12 @@ else
     var _blazorDownloadFileLink = document.createElement(""a"");
     _blazorDownloadFileLink.download = ""{fileName}"";
     _blazorDownloadFileLink.style.display = ""none"";
-    _blazorDownloadFileLink.href = URL.createObjectURL(_blazorDownloadFileBlob);
+    var _blazorDownloadFileObjectUrl = URL.createObjectURL(_blazorDownloadFileBlob); 
+    _blazorDownloadFileLink.href = _blazorDownloadFileObjectUrl;
     document.body.appendChild(_blazorDownloadFileLink); // Needed for Firefox
     _blazorDownloadFileLink.click();
+    URL.revokeObjectURL(_blazorDownloadFileObjectUrl);
+    _blazorDownloadFileObjectUrl = null;
     _blazorDownloadFileBlob = null;
     document.body.removeChild(_blazorDownloadFileLink);
     _blazorDownloadFileLink = null;
@@ -133,9 +139,12 @@ else
     var _blazorDownloadFileLink = document.createElement(""a"");
     _blazorDownloadFileLink.download = ""{fileName}"";
     _blazorDownloadFileLink.style.display = ""none"";
-    _blazorDownloadFileLink.href = URL.createObjectURL(_blazorDownloadFileBlob);
+    var _blazorDownloadFileObjectUrl = URL.createObjectURL(_blazorDownloadFileBlob); 
+    _blazorDownloadFileLink.href = _blazorDownloadFileObjectUrl;
     document.body.appendChild(_blazorDownloadFileLink); // Needed for Firefox
     _blazorDownloadFileLink.click();
+    URL.revokeObjectURL(_blazorDownloadFileObjectUrl);
+    _blazorDownloadFileObjectUrl = null;
     _blazorDownloadFileBlob = null;
     document.body.removeChild(_blazorDownloadFileLink);
     _blazorDownloadFileLink = null;
@@ -156,9 +165,9 @@ if(_blazorDownloadFileBuffers === null)
 {{
     _blazorDownloadFileBuffers = new Array();
 }}
-function _blazorDownloadFileBuffersPush(base64)
-{{ 
-     _blazorDownloadFileBuffers.push(base64);
+function _blazorDownloadFileBuffersPush(bytes)
+{{
+     _blazorDownloadFileBuffers.push(bytes);
 }}";
         }
         /// <summary>

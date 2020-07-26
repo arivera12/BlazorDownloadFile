@@ -282,15 +282,16 @@ namespace BlazorDownloadFile
         public async ValueTask DownloadFile(string fileName, Stream stream, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
             await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.InitializeBlazorDownloadFileBuffer());
-            var buffer = new byte[bufferSize];
-            var pendingBytesToRead = 0;
+            var totalOfBytes = (int)stream.Length;
+            var totalOfBytesReaded = 0;
+            var pendingBytesToRead = totalOfBytes;
             do
             {
-                pendingBytesToRead = await stream.ReadAsync(buffer, 0, bufferSize);
-                foreach (var partFile in Partition(buffer, bufferSize))
-                {
-                    await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", partFile);
-                }
+                var currentBufferSize = bufferSize > totalOfBytes ? totalOfBytes : bufferSize > pendingBytesToRead ? pendingBytesToRead : bufferSize;
+                var buffer = new byte[currentBufferSize];
+                totalOfBytesReaded += await stream.ReadAsync(buffer, 0, currentBufferSize);
+                pendingBytesToRead -= totalOfBytesReaded;
+                await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", buffer.Select(b => b));
             } while (pendingBytesToRead > 0);
             await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.DownloadFileJavascriptScriptByteArrayPartitioned(fileName, contentType));
         }
@@ -304,20 +305,21 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken timeOutJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream")
+        public async ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
-            await JSRuntime.InvokeVoidAsync("eval", timeOutJavaScriptInterop, DownloadFileScript.InitializeBlazorDownloadFileBuffer());
-            var buffer = new byte[bufferSize];
-            var pendingBytesToRead = 0;
+            await JSRuntime.InvokeVoidAsync("eval", cancellationTokenJavaScriptInterop, DownloadFileScript.InitializeBlazorDownloadFileBuffer());
+            var totalOfBytes = (int)stream.Length;
+            var totalOfBytesReaded = 0;
+            var pendingBytesToRead = totalOfBytes;
             do
             {
-                pendingBytesToRead = await stream.ReadAsync(buffer, 0, bufferSize, cancellationTokenBytesRead);
-                foreach (var partFile in Partition(buffer, bufferSize))
-                {
-                    await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOutJavaScriptInterop, partFile);
-                }
+                var currentBufferSize = bufferSize > totalOfBytes ? totalOfBytes : bufferSize > pendingBytesToRead ? pendingBytesToRead : bufferSize;
+                var buffer = new byte[currentBufferSize];
+                totalOfBytesReaded += await stream.ReadAsync(buffer, 0, currentBufferSize, cancellationTokenBytesRead);
+                pendingBytesToRead -= totalOfBytesReaded;
+                await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationTokenJavaScriptInterop, buffer.Select(b => b));
             } while (pendingBytesToRead > 0);
-            await JSRuntime.InvokeVoidAsync("eval", timeOutJavaScriptInterop, DownloadFileScript.DownloadFileJavascriptScriptByteArrayPartitioned(fileName, contentType));
+            await JSRuntime.InvokeVoidAsync("eval", cancellationTokenJavaScriptInterop, DownloadFileScript.DownloadFileJavascriptScriptByteArrayPartitioned(fileName, contentType));
         }
         /// <summary>
         ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
@@ -332,15 +334,16 @@ namespace BlazorDownloadFile
         public async ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
             await JSRuntime.InvokeVoidAsync("eval", timeOutJavaScriptInterop, DownloadFileScript.InitializeBlazorDownloadFileBuffer());
-            var buffer = new byte[bufferSize];
-            var pendingBytesToRead = 0;
+            var totalOfBytes = (int)stream.Length;
+            var totalOfBytesReaded = 0;
+            var pendingBytesToRead = totalOfBytes;
             do
             {
-                pendingBytesToRead = await stream.ReadAsync(buffer, 0, bufferSize, cancellationTokenBytesRead);
-                foreach (var partFile in Partition(buffer, bufferSize))
-                {
-                    await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOutJavaScriptInterop, partFile);
-                }
+                var currentBufferSize = bufferSize > totalOfBytes ? totalOfBytes : bufferSize > pendingBytesToRead ? pendingBytesToRead : bufferSize;
+                var buffer = new byte[currentBufferSize];
+                totalOfBytesReaded += await stream.ReadAsync(buffer, 0, currentBufferSize, cancellationTokenBytesRead);
+                pendingBytesToRead -= totalOfBytesReaded;
+                await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOutJavaScriptInterop, buffer.Select(b => b));
             } while (pendingBytesToRead > 0);
             await JSRuntime.InvokeVoidAsync("eval", timeOutJavaScriptInterop, DownloadFileScript.DownloadFileJavascriptScriptByteArrayPartitioned(fileName, contentType));
         }
