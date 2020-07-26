@@ -15,7 +15,7 @@ Blazor download files to the browser from c# without any JavaScript library or d
 
 ## Installation
 
-`Install-Package BlazorDownloadFile -Version 1.0.12`
+`Install-Package BlazorDownloadFile -Version 2.0.0`
 
 ## Register the service in your services method
 
@@ -25,7 +25,7 @@ Blazor download files to the browser from c# without any JavaScript library or d
 
 Since version 1.0.6. 
 
-Please updgrade to latest version if you are using older versions.
+Please upgrade to latest version if you are using older versions.
 
 ## Usage
 
