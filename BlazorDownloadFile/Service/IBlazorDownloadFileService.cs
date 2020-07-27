@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,6 +11,106 @@ namespace BlazorDownloadFile
     /// </summary>
     public interface IBlazorDownloadFileService
     {
+        /// <summary>
+        /// Adds a buffer to javascript side
+        /// </summary>
+        /// <param name="bytesBase64">The base 64 string</param>
+        /// <returns></returns>
+        ValueTask AddBuffer(string bytesBase64);
+        /// <summary>
+        /// Adds a buffer to javascript side
+        /// </summary>
+        /// <param name="bytesBase64">The base 64 string</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        ValueTask AddBuffer(string bytesBase64, CancellationToken cancellationToken);
+        /// <summary>
+        /// Adds a buffer to javascript side
+        /// </summary>
+        /// <param name="bytesBase64">The base 64 string</param>
+        /// <param name="timeOut">The timeout</param>
+        /// <returns></returns>
+        ValueTask AddBuffer(string bytesBase64, TimeSpan timeOut);
+        /// <summary>
+        /// Adds a buffer to javascript side
+        /// </summary>
+        /// <param name="bytes">The bytes</param>
+        /// <returns></returns>
+        ValueTask AddBuffer(byte[] bytes);
+        /// <summary>
+        /// Adds a buffer to javascript side
+        /// </summary>
+        /// <param name="bytes">The bytes</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+       ValueTask AddBuffer(byte[] bytes, CancellationToken cancellationToken);
+        /// <summary>
+        /// Adds a buffer to javascript side
+        /// </summary>
+        /// <param name="bytes">The bytes</param>
+        /// <param name="timeOut">The timeout</param>
+        /// <returns></returns>
+        ValueTask AddBuffer(byte[] bytes, TimeSpan timeOut);
+        /// <summary>
+        /// Adds a buffer to javascript side
+        /// </summary>
+        /// <param name="bytes">The bytes</param>
+        /// <returns></returns>
+        ValueTask AddBuffer(IEnumerable<byte> bytes);
+        /// <summary>
+        /// Adds a buffer to javascript side
+        /// </summary>
+        /// <param name="bytes">The bytes</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        ValueTask AddBuffer(IEnumerable<byte> bytes, CancellationToken cancellationToken);
+        /// <summary>
+        /// Adds a buffer to javascript side
+        /// </summary>
+        /// <param name="bytes">The bytes</param>
+        /// <param name="timeOut">The timeout</param>
+        /// <returns></returns>
+        ValueTask AddBuffer(IEnumerable<byte> bytes, TimeSpan timeOut);
+        /// <summary>
+        /// Adds a buffer to javascript side
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        /// <returns></returns>
+        ValueTask AddBuffer(Stream stream);
+        /// <summary>
+        /// Adds a buffer to javascript side
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns></returns>
+        ValueTask AddBuffer(Stream stream, CancellationToken cancellationToken);
+        /// <summary>
+        /// Adds a buffer to javascript side
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        /// <param name="streamReadcancellationToken">The cancellation token</param>
+        /// <param name="timeOutJavaScript">The timeout</param>
+        /// <returns></returns>
+        ValueTask AddBuffer(Stream stream, CancellationToken streamReadcancellationToken, TimeSpan timeOutJavaScript);
+        /// <summary>
+        /// Clears the buffers in javascript side
+        /// </summary>
+        /// <returns></returns>
+        ValueTask ClearBuffers();
+        /// <summary>
+        /// Merges and downloads all pending buffers into a single file in the browser 
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="contentType">The content type</param>
+        /// <returns></returns>
+        ValueTask DownloadBase64Buffers(string fileName, string contentType = "application/octet-stream");
+        /// <summary>
+        /// Merges and downloads all pending buffers into a single file in the browser 
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="contentType">The content type</param>
+        /// <returns></returns>
+        ValueTask DownloadBinaryBuffers(string fileName, string contentType = "application/octet-stream");
         /// <summary>
         /// Download a file from blazor context to the browser 
         /// </summary>
@@ -62,6 +163,32 @@ namespace BlazorDownloadFile
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
         ValueTask DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, string contentType = "application/octet-stream");
+        /// <summary>
+        /// Download a file from blazor context to the browser
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="bytes">The bytes of the file</param>
+        /// <param name="contentType">The file content type</param>
+        /// <returns></returns>
+        ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, string contentType = "application/octet-stream");
+        /// <summary>
+        /// Download a file from blazor context to the browser
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="bytes">The bytes of the file</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <param name="contentType">The file content type</param>
+        /// <returns></returns>
+        ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, string contentType = "application/octet-stream");
+        /// <summary>
+        /// Download a file from blazor context to the browser
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="bytes">The bytes of the file</param>
+        /// <param name="timeOut">The timeout of the operation</param>
+        /// <param name="contentType">The file content type</param>
+        /// <returns></returns>
+        ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, string contentType = "application/octet-stream");
         /// <summary>
         ///  Download a file from blazor context to the browser.
         /// </summary>
@@ -174,6 +301,35 @@ namespace BlazorDownloadFile
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
         ValueTask DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream");
+        /// <summary>
+        /// Download a file from blazor context to the browser
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="bytes">The bytes of the file</param>
+        /// <param name="bufferSize">The buffer size</param>
+        /// <param name="contentType">The file content type</param>
+        /// <returns></returns>
+        ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, int bufferSize = 32768, string contentType = "application/octet-stream");
+        /// <summary>
+        /// Download a file from blazor context to the browser
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="bytes">The bytes of the file</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <param name="bufferSize">The buffer size</param>
+        /// <param name="contentType">The file content type</param>
+        /// <returns></returns>
+        ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream");
+        /// <summary>
+        /// Download a file from blazor context to the browser
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="bytes">The bytes of the file</param>
+        /// <param name="timeOut">The timeout of the operation</param>
+        /// <param name="bufferSize">The buffer size</param>
+        /// <param name="contentType">The file content type</param>
+        /// <returns></returns>
+        ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream");
         /// <summary>
         ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
         /// </summary>

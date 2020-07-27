@@ -8,16 +8,15 @@
     <PackageProjectUrl>https://github.com/arivera12/BlazorDownloadFile</PackageProjectUrl>
     <RepositoryUrl>https://github.com/arivera12/BlazorDownloadFile</RepositoryUrl>
     <RepositoryType>blazor, c#</RepositoryType>
-    <PackageReleaseNotes>This library version have major changes on javascript side but still maintains compatibility with v1.0.*, it is safe to upgrade. This version includes: Buffered downloads, overload methods with cancellation tokens and javascript interop timeout.
-Fixes: https://github.com/arivera12/BlazorDownloadFile/issues/5 https://github.com/arivera12/BlazorDownloadFile/issues/12</PackageReleaseNotes>
+    <PackageReleaseNotes>Implemented AddBuffer, ClearBuffers, DownloadBase64Buffers and DownloadBinaryBuffers. Increased performance by initializing all JavaScript methods and variables in DownloadFileService constructor the initial variables and methods to perform the task. All functions with eval have been removed. Removed internal initialization call on all methods by instead of using null to clear buffer used new Array() instead. Fixes https://github.com/arivera12/BlazorDownloadFile/issues/7</PackageReleaseNotes>
     <Authors>Anthony G. Rivera Cosme</Authors>
-    <Company>Anthony G. Rivera Cosme</Company>
+    <Company></Company>
     <Copyright>Anthony G. Rivera Cosme</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <Version>2.0.0</Version>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.1.0</Version>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <FileVersion>2.1.0.0</FileVersion>
   </PropertyGroup>
 
 
