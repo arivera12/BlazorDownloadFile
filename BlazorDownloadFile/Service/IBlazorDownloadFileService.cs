@@ -93,6 +93,16 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         ValueTask AddBuffer(Stream stream, CancellationToken streamReadcancellationToken, TimeSpan timeOutJavaScript);
         /// <summary>
+        /// Checks wether there is any buffer loaded in the JavaScript side.
+        /// </summary>
+        /// <returns></returns>
+        ValueTask<bool> AnyBuffer();
+        /// <summary>
+        /// Gets the buffers count loaded in the JavaScript side.
+        /// </summary>
+        /// <returns></returns>
+        ValueTask<int> BuffersCount();
+        /// <summary>
         /// Clears the buffers in javascript side
         /// </summary>
         /// <returns></returns>

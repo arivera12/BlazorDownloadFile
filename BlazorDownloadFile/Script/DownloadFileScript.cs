@@ -21,6 +21,14 @@ function _blazorDownloadFileClearBuffer()
 {{
     _blazorDownloadFileBuffers = new Array();
 }}
+function _blazorDownloadFileAnyBuffer()
+{{
+    return _blazorDownloadFileBuffers && _blazorDownloadFileBuffers.length;
+}}
+function _blazorDownloadFileBuffersCount()
+{{
+    return _blazorDownloadFileBuffers ? _blazorDownloadFileBuffers.length : 0;
+}}
 function _blazorDowloadFileBase64String(fileName, bytesBase64, contentType)
 {{
     if (navigator.msSaveBlob) 

@@ -142,6 +142,22 @@ namespace BlazorDownloadFile
             return JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOutJavaScript, stream.ToByteArrayAsync(streamReadcancellationToken));
         }
         /// <summary>
+        /// Checks wether there is any buffer loaded in the JavaScript side.
+        /// </summary>
+        /// <returns></returns>
+        public ValueTask<bool> AnyBuffer()
+        {
+            return JSRuntime.InvokeAsync<bool>("_blazorDownloadFileAnyBuffer");
+        }
+        /// <summary>
+        /// Gets the buffers count loaded in the JavaScript side.
+        /// </summary>
+        /// <returns></returns>
+        public ValueTask<int> BuffersCount()
+        {
+            return JSRuntime.InvokeAsync<int>("_blazorDownloadFileBuffersCount");
+        }
+        /// <summary>
         /// Clears all variables in javascript side
         /// </summary>
         /// <returns></returns>
