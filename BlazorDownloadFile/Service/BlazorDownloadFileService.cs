@@ -166,7 +166,7 @@ namespace BlazorDownloadFile
             return JSRuntime.InvokeVoidAsync("_blazorDownloadFileClearBuffer");
         }
         /// <summary>
-        /// Merges and downloads all pending buffers into a single file in the browser 
+        /// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a base64 string. 
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="contentType">The content type</param>
@@ -176,7 +176,7 @@ namespace BlazorDownloadFile
             return JSRuntime.InvokeVoidAsync("_blazorDowloadFileBase64StringPartitioned", fileName, contentType);
         }
         /// <summary>
-        /// Merges and downloads all pending buffers into a single file in the browser 
+        /// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a byte array, byte enumerable or a stream. 
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="contentType">The content type</param>
@@ -264,6 +264,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         public async ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, string contentType = "application/octet-stream")
         {
+            await ClearBuffers();
             await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", bytes);
             await JSRuntime.InvokeVoidAsync("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
         }
@@ -277,6 +278,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         public async ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, string contentType = "application/octet-stream")
         {
+            await ClearBuffers();
             await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationToken, bytes);
             await JSRuntime.InvokeVoidAsync("_blazorDowloadFileByteArrayPartitioned", cancellationToken, fileName, contentType);
         }
@@ -290,6 +292,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         public async ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, string contentType = "application/octet-stream")
         {
+            await ClearBuffers();
             await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOut, bytes);
             await JSRuntime.InvokeVoidAsync("_blazorDowloadFileByteArrayPartitioned", timeOut, fileName, contentType);
         }
@@ -374,7 +377,8 @@ namespace BlazorDownloadFile
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
         public async ValueTask DownloadFile(string fileName, string bytesBase64, int bufferSize = 32768, string contentType = "application/octet-stream")
-        { 
+        {
+            await ClearBuffers();
             foreach (var partFile in Partition(bytesBase64, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", string.Join("", partFile));
@@ -392,6 +396,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         public async ValueTask DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
+            await ClearBuffers();
             foreach (var partFile in Partition(bytesBase64, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationToken, string.Join("", partFile));
@@ -409,6 +414,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         public async ValueTask DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
+            await ClearBuffers();
             foreach (var partFile in Partition(bytesBase64, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOut, string.Join("", partFile));
@@ -425,6 +431,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         public async ValueTask DownloadFile(string fileName, byte[] bytes, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
+            await ClearBuffers();
             foreach (var partFile in Partition(bytes, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", partFile);
@@ -442,6 +449,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         public async ValueTask DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
+            await ClearBuffers();
             foreach (var partFile in Partition(bytes, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationToken, partFile);
@@ -459,6 +467,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         public async ValueTask DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
+            await ClearBuffers();
             foreach (var partFile in Partition(bytes, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOut, partFile);
@@ -475,6 +484,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         public async ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
+            await ClearBuffers();
             foreach (var partFile in Partition(bytes, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", partFile);
@@ -492,6 +502,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         public async ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
+            await ClearBuffers();
             foreach (var partFile in Partition(bytes, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationToken, partFile);
@@ -509,6 +520,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         public  async ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
+            await ClearBuffers();
             foreach (var partFile in Partition(bytes, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOut, partFile);
@@ -525,6 +537,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         public async ValueTask DownloadFile(string fileName, Stream stream, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
+            await ClearBuffers();
             var totalOfBytes = (int)stream.Length;
             var totalOfBytesReaded = 0;
             var pendingBytesToRead = totalOfBytes;
@@ -550,6 +563,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         public async ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
+            await ClearBuffers();
             var totalOfBytes = (int)stream.Length;
             var totalOfBytesReaded = 0;
             var pendingBytesToRead = totalOfBytes;
@@ -575,6 +589,7 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         public async ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
+            await ClearBuffers();
             var totalOfBytes = (int)stream.Length;
             var totalOfBytesReaded = 0;
             var pendingBytesToRead = totalOfBytes;

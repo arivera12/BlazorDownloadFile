@@ -108,14 +108,14 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         ValueTask ClearBuffers();
         /// <summary>
-        /// Merges and downloads all pending buffers into a single file in the browser 
+        /// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a base64 string type. 
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="contentType">The content type</param>
         /// <returns></returns>
         ValueTask DownloadBase64Buffers(string fileName, string contentType = "application/octet-stream");
         /// <summary>
-        /// Merges and downloads all pending buffers into a single file in the browser 
+        /// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a byte array, byte enumerable or a stream types. 
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="contentType">The content type</param>

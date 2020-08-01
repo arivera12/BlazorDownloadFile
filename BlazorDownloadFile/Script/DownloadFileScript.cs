@@ -13,6 +13,10 @@ if(typeof _blazorDownloadFileBuffers === 'undefined')
 {{
     var _blazorDownloadFileBuffers = new Array();
 }}
+else
+{{
+    _blazorDownloadFileBuffers = new Array();
+}}
 function _blazorDownloadFileBuffersPush(bytes)
 {{
      _blazorDownloadFileBuffers.push(bytes);
