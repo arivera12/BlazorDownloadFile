@@ -13,6 +13,8 @@
 
 Blazor download files to the browser from c# without any JavaScript library or dependency.
 
+BlazorDownloadFile is the solution to saving files on the client-side, and is perfect for web apps that generates files on the client, However if the file is coming from the server we recommend you to first try to use Content-Disposition attachment response header as it has more cross-browser compatiblity.
+
 ## Installation
 
 `Install-Package BlazorDownloadFile -Version 2.1.0`
@@ -97,7 +99,7 @@ Based on the las sentence, a list of bytes gets passed down from c#  to JavaScri
 
 The binary representation seems to perform very well since we just needed to call `Uint8Array` and push the binary representation entirely into the array to then pass it down to the JavaScript native `Blob` object. 
 
-<b>Take note that you may use the overload methods with buffers if you are sending big files over the wire.</b>
+<b>Take note that you may use the overload methods with buffers if you are sending big files over the wire and also that browsers have their own limits based on the browser vendor and the OS [JavaScript Max Blob Size](https://stackoverflow.com/questions/28307789/is-there-any-limitation-on-javascript-max-blob-size).</b>
 
 <b>Take note also that blazor server side uses [Signal R](https://docs.microsoft.com/en-us/aspnet/core/signalr/security?view=aspnetcore-3.1#buffer-management) and has its data transfer (buffer) limitations.</b>
 
