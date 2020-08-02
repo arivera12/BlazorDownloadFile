@@ -2,7 +2,7 @@
 
 <p>
 	<a href="https://www.nuget.org/packages/BlazorDownloadFile">
-	    <img src="https://buildstats.info/nuget/BlazorDownloadFile?v=1.0.12" />
+	    <img src="https://buildstats.info/nuget/BlazorDownloadFile?v=2.1.0" />
 	</a>
 	<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RSE2NMEG3F7QU&source=url">
 	    <img src="https://img.shields.io/badge/Donate-PayPal-green.svg" />
@@ -15,7 +15,7 @@ Blazor download files to the browser from c# without any JavaScript library or d
 
 ## Installation
 
-`Install-Package BlazorDownloadFile -Version 2.0.0`
+`Install-Package BlazorDownloadFile -Version 2.1.0`
 
 ## Register the service in your services method
 
@@ -34,30 +34,53 @@ Please upgrade to latest version if you are using older versions.
 ### BlazorDownloadFileService Methods
 
 ```
-ValueTask DownloadFile(string fileName, string bytesBase64, string contentType = "application/octet-stream");
-ValueTask DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, string contentType = "application/octet-stream");
-ValueTask DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, string contentType = "application/octet-stream");
-ValueTask DownloadFile(string fileName, byte[] bytes, string contentType = "application/octet-stream");
-ValueTask DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, string contentType = "application/octet-stream");
-ValueTask DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, string contentType = "application/octet-stream");
-ValueTask DownloadFile(string fileName, Stream stream, string contentType = "application/octet-stream");
-ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, string contentType = "application/octet-stream");
-ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, string contentType = "application/octet-stream");
-ValueTask DownloadFileFromText(string fileName, string plainText, string contentType = "text/plain");
-ValueTask DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, string contentType = "text/plain");
-ValueTask DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, string contentType = "text/plain");
-ValueTask DownloadFile(string fileName, string bytesBase64, int bufferSize = 32768, string contentType = "application/octet-stream");
-ValueTask DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream");
-ValueTask DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream");
-ValueTask DownloadFile(string fileName, byte[] bytes, int bufferSize = 32768, string contentType = "application/octet-stream");
-ValueTask DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream");
-ValueTask DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream");
-ValueTask DownloadFile(string fileName, Stream stream, int bufferSize = 32768, string contentType = "application/octet-stream");
-ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream");
-ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream");
-ValueTask DownloadFileFromText(string fileName, string plainText, int bufferSize = 32768, string contentType = "text/plain");
-ValueTask DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "text/plain");
-ValueTask DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, int bufferSize = 32768, string contentType = "text/plain");
+ValueTask AddBuffer(string bytesBase64);
+ValueTask AddBuffer(string bytesBase64, CancellationToken cancellationToken);
+ValueTask AddBuffer(string bytesBase64, TimeSpan timeOut);
+ValueTask AddBuffer(byte[] bytes);
+ValueTask AddBuffer(byte[] bytes, CancellationToken cancellationToken);
+ValueTask AddBuffer(byte[] bytes, TimeSpan timeOut);
+ValueTask AddBuffer(IEnumerable<byte> bytes);
+ValueTask AddBuffer(IEnumerable<byte> bytes, CancellationToken cancellationToken);
+ValueTask AddBuffer(IEnumerable<byte> bytes, TimeSpan timeOut);
+ValueTask AddBuffer(Stream stream);
+ValueTask AddBuffer(Stream stream, CancellationToken cancellationToken);
+ValueTask AddBuffer(Stream stream, CancellationToken streamReadcancellationToken, TimeSpan timeOutJavaScript);
+ValueTask<bool> AnyBuffer();
+ValueTask<int> BuffersCount();
+ValueTask ClearBuffers();
+ValueTask<DowloadFileResult> DownloadBase64Buffers(string fileName, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadBinaryBuffers(string fileName, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, string contentType = "text/plain");
+ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, string contentType = "text/plain");
+ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, string contentType = "text/plain");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, int bufferSize = 32768, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, int bufferSize = 32768, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, int bufferSize = 32768, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, int bufferSize = 32768, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, int bufferSize = 32768, string contentType = "text/plain");
+ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "text/plain");
+ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, int bufferSize = 32768, string contentType = "text/plain");
 ```
 
 ### Performance Considerations and Understandings
