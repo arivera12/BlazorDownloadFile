@@ -99,7 +99,7 @@ Based on the las sentence, a list of bytes gets passed down from c#  to JavaScri
 
 The binary representation seems to perform very well since we just needed to call `Uint8Array` and push the binary representation entirely into the array to then pass it down to the JavaScript native `Blob` object. 
 
-<b>Take note that you may use the overload methods with buffers if you are sending big files over the wire and also that browsers have their own limitations on `Blob` based on the device hardware, browser vendor and the OS [JavaScript Max Blob Size](https://stackoverflow.com/questions/28307789/is-there-any-limitation-on-javascript-max-blob-size).</b>
+<b>Take note that you may use the overload methods with buffers if you are sending big files over the wire and also that browsers have their own limitations on [JavaScript Max Blob Size](https://stackoverflow.com/questions/28307789/is-there-any-limitation-on-javascript-max-blob-size) based on the device hardware, browser vendor and the OS.</b>
 
 <b>Take note also that blazor server side uses [Signal R](https://docs.microsoft.com/en-us/aspnet/core/signalr/security?view=aspnetcore-3.1#buffer-management) and has its data transfer (buffer) limitations.</b>
 
