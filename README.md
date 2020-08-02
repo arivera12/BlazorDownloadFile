@@ -13,7 +13,9 @@
 
 Blazor download files to the browser from c# without any JavaScript library or dependency.
 
-BlazorDownloadFile is the solution to saving files on the client-side, and is perfect for web apps that generates files on the client, However if the file is coming from the server we recommend you to first try to use Content-Disposition attachment response header as it has more cross-browser compatiblity.
+BlazorDownloadFile is the solution to saving files on the client-side, and is perfect for web apps that generates files on the client. 
+
+However if the file is coming from the server we recommend you to first try to use Content-Disposition attachment response header as it has more cross-browser compatiblity.
 
 ## Installation
 
