@@ -171,9 +171,9 @@ namespace BlazorDownloadFile
         /// <param name="fileName">The filename</param>
         /// <param name="contentType">The content type</param>
         /// <returns></returns>
-        public ValueTask DownloadBase64Buffers(string fileName, string contentType = "application/octet-stream")
+        public ValueTask<DowloadFileResult> DownloadBase64Buffers(string fileName, string contentType = "application/octet-stream")
         {
-            return JSRuntime.InvokeVoidAsync("_blazorDowloadFileBase64StringPartitioned", fileName, contentType);
+            return JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileBase64StringPartitioned", fileName, contentType);
         }
         /// <summary>
         /// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a byte array, byte enumerable or a stream. 
@@ -181,9 +181,9 @@ namespace BlazorDownloadFile
         /// <param name="fileName">The filename</param>
         /// <param name="contentType">The content type</param>
         /// <returns></returns>
-        public ValueTask DownloadBinaryBuffers(string fileName, string contentType = "application/octet-stream")
+        public ValueTask<DowloadFileResult> DownloadBinaryBuffers(string fileName, string contentType = "application/octet-stream")
         {
-            return JSRuntime.InvokeVoidAsync("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
+            return JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser 
@@ -192,9 +192,9 @@ namespace BlazorDownloadFile
         /// <param name="bytesBase64">The bytes base 64 of the file</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public ValueTask DownloadFile(string fileName, string bytesBase64, string contentType = "application/octet-stream")
+        public ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, string contentType = "application/octet-stream")
         {
-            return JSRuntime.InvokeVoidAsync("_blazorDowloadFileBase64String", fileName, bytesBase64, contentType);
+            return JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileBase64String", fileName, bytesBase64, contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser 
@@ -204,9 +204,9 @@ namespace BlazorDownloadFile
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public ValueTask DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, string contentType = "application/octet-stream")
+        public ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, string contentType = "application/octet-stream")
         {
-            return JSRuntime.InvokeVoidAsync("_blazorDowloadFileBase64String", cancellationToken, fileName, bytesBase64, contentType);
+            return JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileBase64String", cancellationToken, fileName, bytesBase64, contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser 
@@ -216,9 +216,9 @@ namespace BlazorDownloadFile
         /// <param name="timeOut">The timeout of the operation</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public ValueTask DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, string contentType = "application/octet-stream")
+        public ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, string contentType = "application/octet-stream")
         {
-            return JSRuntime.InvokeVoidAsync("_blazorDowloadFileBase64String", timeOut, fileName, bytesBase64, contentType);
+            return JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileBase64String", timeOut, fileName, bytesBase64, contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser
@@ -227,9 +227,9 @@ namespace BlazorDownloadFile
         /// <param name="bytes">The bytes of the file</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public ValueTask DownloadFile(string fileName, byte[] bytes, string contentType = "application/octet-stream")
+        public ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, string contentType = "application/octet-stream")
         {
-            return JSRuntime.InvokeVoidAsync("_blazorDowloadFileBase64String", fileName, Convert.ToBase64String(bytes), contentType);
+            return JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileBase64String", fileName, Convert.ToBase64String(bytes), contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser
@@ -239,9 +239,9 @@ namespace BlazorDownloadFile
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public ValueTask DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, string contentType = "application/octet-stream")
+        public ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, string contentType = "application/octet-stream")
         {
-            return JSRuntime.InvokeVoidAsync("_blazorDowloadFileBase64String", cancellationToken, fileName, Convert.ToBase64String(bytes), contentType);
+            return JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileBase64String", cancellationToken, fileName, Convert.ToBase64String(bytes), contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser
@@ -251,9 +251,9 @@ namespace BlazorDownloadFile
         /// <param name="timeOut">The timeout of the operation</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public ValueTask DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, string contentType = "application/octet-stream")
+        public ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, string contentType = "application/octet-stream")
         {
-            return JSRuntime.InvokeVoidAsync("_blazorDowloadFileBase64String", timeOut, fileName, Convert.ToBase64String(bytes), contentType);
+            return JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileBase64String", timeOut, fileName, Convert.ToBase64String(bytes), contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser
@@ -262,11 +262,11 @@ namespace BlazorDownloadFile
         /// <param name="bytes">The bytes of the file</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, string contentType = "application/octet-stream")
         {
             await ClearBuffers();
             await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", bytes);
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser
@@ -276,11 +276,11 @@ namespace BlazorDownloadFile
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, string contentType = "application/octet-stream")
         {
             await ClearBuffers();
             await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationToken, bytes);
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileByteArrayPartitioned", cancellationToken, fileName, contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileByteArrayPartitioned", cancellationToken, fileName, contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser
@@ -290,11 +290,11 @@ namespace BlazorDownloadFile
         /// <param name="timeOut">The timeout of the operation</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, string contentType = "application/octet-stream")
         {
             await ClearBuffers();
             await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOut, bytes);
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileByteArrayPartitioned", timeOut, fileName, contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileByteArrayPartitioned", timeOut, fileName, contentType);
         }
         /// <summary>
         ///  Download a file from blazor context to the browser.
@@ -303,9 +303,9 @@ namespace BlazorDownloadFile
         /// <param name="stream">The stream of the file</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, Stream stream, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, string contentType = "application/octet-stream")
         {
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileBase64String", fileName, Convert.ToBase64String(await stream.ToByteArrayAsync()), contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileBase64String", fileName, Convert.ToBase64String(await stream.ToByteArrayAsync()), contentType);
         }
         /// <summary>
         ///  Download a file from blazor context to the browser.
@@ -316,9 +316,9 @@ namespace BlazorDownloadFile
         /// <param name="cancellationTokenJavaScriptInterop">The cancellation token when executing javascript</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, string contentType = "application/octet-stream")
         {
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileBase64String", cancellationTokenJavaScriptInterop, fileName, Convert.ToBase64String(await stream.ToByteArrayAsync(cancellationTokenBytesRead)), contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileBase64String", cancellationTokenJavaScriptInterop, fileName, Convert.ToBase64String(await stream.ToByteArrayAsync(cancellationTokenBytesRead)), contentType);
         }
         /// <summary>
         ///  Download a file from blazor context to the browser.
@@ -329,9 +329,9 @@ namespace BlazorDownloadFile
         /// <param name="timeOutJavaScriptInterop">The timeout when executing javascript</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, string contentType = "application/octet-stream")
         {
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileBase64String", timeOutJavaScriptInterop, fileName, Convert.ToBase64String(await stream.ToByteArrayAsync(cancellationTokenBytesRead)), contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileBase64String", timeOutJavaScriptInterop, fileName, Convert.ToBase64String(await stream.ToByteArrayAsync(cancellationTokenBytesRead)), contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the brower
@@ -340,7 +340,7 @@ namespace BlazorDownloadFile
         /// <param name="plainText">The plain text</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public ValueTask DownloadFileFromText(string fileName, string plainText, string contentType = "text/plain")
+        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, string contentType = "text/plain")
         {
             return DownloadFile(fileName, plainText.ToBase64Encode(), contentType);
         }
@@ -352,7 +352,7 @@ namespace BlazorDownloadFile
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public ValueTask DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, string contentType = "text/plain")
+        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, string contentType = "text/plain")
         {
             return DownloadFile(fileName, plainText.ToBase64Encode(), cancellationToken, contentType);
         }
@@ -364,7 +364,7 @@ namespace BlazorDownloadFile
         /// <param name="timeOut">The timeout of the operation</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public ValueTask DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, string contentType = "text/plain")
+        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, string contentType = "text/plain")
         {
             return DownloadFile(fileName, plainText.ToBase64Encode(), timeOut, contentType);
         }
@@ -376,14 +376,14 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, string bytesBase64, int bufferSize = 32768, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
             await ClearBuffers();
             foreach (var partFile in Partition(bytesBase64, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", string.Join("", partFile));
             }
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileBase64StringPartitioned", fileName, contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileBase64StringPartitioned", fileName, contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser 
@@ -394,14 +394,14 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
             await ClearBuffers();
             foreach (var partFile in Partition(bytesBase64, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationToken, string.Join("", partFile));
             }
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileBase64StringPartitioned", cancellationToken, fileName, contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileBase64StringPartitioned", cancellationToken, fileName, contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser 
@@ -412,14 +412,14 @@ namespace BlazorDownloadFile
         /// <param name="timeOut">The timeout of the operation</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
             await ClearBuffers();
             foreach (var partFile in Partition(bytesBase64, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOut, string.Join("", partFile));
             }
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileBase64StringPartitioned", timeOut, fileName, contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileBase64StringPartitioned", timeOut, fileName, contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser
@@ -429,14 +429,14 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, byte[] bytes, int bufferSize = 32768, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
             await ClearBuffers();
             foreach (var partFile in Partition(bytes, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", partFile);
             }
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser
@@ -447,14 +447,14 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
             await ClearBuffers();
             foreach (var partFile in Partition(bytes, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationToken, partFile);
             }
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileByteArrayPartitioned", cancellationToken, fileName, contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileByteArrayPartitioned", cancellationToken, fileName, contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser
@@ -465,14 +465,14 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
             await ClearBuffers();
             foreach (var partFile in Partition(bytes, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOut, partFile);
             }
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileByteArrayPartitioned", timeOut, fileName, contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileByteArrayPartitioned", timeOut, fileName, contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser
@@ -482,14 +482,14 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, int bufferSize = 32768, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
             await ClearBuffers();
             foreach (var partFile in Partition(bytes, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", partFile);
             }
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser
@@ -500,14 +500,14 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
             await ClearBuffers();
             foreach (var partFile in Partition(bytes, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationToken, partFile);
             }
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileByteArrayPartitioned", cancellationToken, fileName, contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileByteArrayPartitioned", cancellationToken, fileName, contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser
@@ -518,14 +518,14 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public  async ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
             await ClearBuffers();
             foreach (var partFile in Partition(bytes, bufferSize))
             {
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOut, partFile);
             }
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileByteArrayPartitioned", timeOut, fileName, contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileByteArrayPartitioned", timeOut, fileName, contentType);
         }
         /// <summary>
         ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
@@ -535,7 +535,7 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, Stream stream, int bufferSize = 32768, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
             await ClearBuffers();
             var totalOfBytes = (int)stream.Length;
@@ -549,7 +549,7 @@ namespace BlazorDownloadFile
                 pendingBytesToRead -= totalOfBytesReaded;
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", buffer.Select(b => b));
             } while (pendingBytesToRead > 0);
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
         }
         /// <summary>
         ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
@@ -561,7 +561,7 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
             await ClearBuffers();
             var totalOfBytes = (int)stream.Length;
@@ -575,7 +575,7 @@ namespace BlazorDownloadFile
                 pendingBytesToRead -= totalOfBytesReaded;
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationTokenJavaScriptInterop, buffer.Select(b => b));
             } while (pendingBytesToRead > 0);
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileByteArrayPartitioned", cancellationTokenJavaScriptInterop, fileName, contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileByteArrayPartitioned", cancellationTokenJavaScriptInterop, fileName, contentType);
         }
         /// <summary>
         ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
@@ -587,7 +587,7 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public async ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream")
+        public async ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream")
         {
             await ClearBuffers();
             var totalOfBytes = (int)stream.Length;
@@ -601,7 +601,7 @@ namespace BlazorDownloadFile
                 pendingBytesToRead -= totalOfBytesReaded;
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOutJavaScriptInterop, buffer.Select(b => b));
             } while (pendingBytesToRead > 0);
-            await JSRuntime.InvokeVoidAsync("_blazorDowloadFileByteArrayPartitioned", timeOutJavaScriptInterop, fileName, contentType);
+            return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileByteArrayPartitioned", timeOutJavaScriptInterop, fileName, contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the brower
@@ -611,7 +611,7 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public ValueTask DownloadFileFromText(string fileName, string plainText, int bufferSize = 32768, string contentType = "text/plain")
+        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, int bufferSize = 32768, string contentType = "text/plain")
         {
             return DownloadFile(fileName, plainText.ToBase64Encode(), bufferSize, contentType);
         }
@@ -624,7 +624,7 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public ValueTask DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "text/plain")
+        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "text/plain")
         {
             return DownloadFile(fileName, plainText.ToBase64Encode(), cancellationToken, bufferSize, contentType);
         }
@@ -637,7 +637,7 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        public ValueTask DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, int bufferSize = 32768, string contentType = "text/plain")
+        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, int bufferSize = 32768, string contentType = "text/plain")
         {
             return DownloadFile(fileName, plainText.ToBase64Encode(), timeOut, bufferSize, contentType);
         }

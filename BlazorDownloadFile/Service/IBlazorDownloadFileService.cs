@@ -113,14 +113,14 @@ namespace BlazorDownloadFile
         /// <param name="fileName">The filename</param>
         /// <param name="contentType">The content type</param>
         /// <returns></returns>
-        ValueTask DownloadBase64Buffers(string fileName, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadBase64Buffers(string fileName, string contentType = "application/octet-stream");
         /// <summary>
         /// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a byte array, byte enumerable or a stream types. 
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="contentType">The content type</param>
         /// <returns></returns>
-        ValueTask DownloadBinaryBuffers(string fileName, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadBinaryBuffers(string fileName, string contentType = "application/octet-stream");
         /// <summary>
         /// Download a file from blazor context to the browser 
         /// </summary>
@@ -128,7 +128,7 @@ namespace BlazorDownloadFile
         /// <param name="bytesBase64">The bytes base 64 of the file</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, string bytesBase64, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, string contentType = "application/octet-stream");
         /// <summary>
         /// Download a file from blazor context to the browser 
         /// </summary>
@@ -137,7 +137,7 @@ namespace BlazorDownloadFile
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, string contentType = "application/octet-stream");
         /// <summary>
         /// Download a file from blazor context to the browser 
         /// </summary>
@@ -146,7 +146,7 @@ namespace BlazorDownloadFile
         /// <param name="timeOut">The timeout of the operation</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, string contentType = "application/octet-stream");
         /// <summary>
         /// Download a file from blazor context to the browser
         /// </summary>
@@ -154,33 +154,7 @@ namespace BlazorDownloadFile
         /// <param name="bytes">The bytes of the file</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, byte[] bytes, string contentType = "application/octet-stream");
-        /// <summary>
-        /// Download a file from blazor context to the browser
-        /// </summary>
-        /// <param name="fileName">The filename</param>
-        /// <param name="bytes">The bytes of the file</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <param name="contentType">The file content type</param>
-        /// <returns></returns>
-        ValueTask DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, string contentType = "application/octet-stream");
-        /// <summary>
-        /// Download a file from blazor context to the browser
-        /// </summary>
-        /// <param name="fileName">The filename</param>
-        /// <param name="bytes">The bytes of the file</param>
-        /// <param name="timeOut">The timeout of the operation</param>
-        /// <param name="contentType">The file content type</param>
-        /// <returns></returns>
-        ValueTask DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, string contentType = "application/octet-stream");
-        /// <summary>
-        /// Download a file from blazor context to the browser
-        /// </summary>
-        /// <param name="fileName">The filename</param>
-        /// <param name="bytes">The bytes of the file</param>
-        /// <param name="contentType">The file content type</param>
-        /// <returns></returns>
-        ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, string contentType = "application/octet-stream");
         /// <summary>
         /// Download a file from blazor context to the browser
         /// </summary>
@@ -189,7 +163,7 @@ namespace BlazorDownloadFile
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, string contentType = "application/octet-stream");
         /// <summary>
         /// Download a file from blazor context to the browser
         /// </summary>
@@ -198,7 +172,33 @@ namespace BlazorDownloadFile
         /// <param name="timeOut">The timeout of the operation</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, string contentType = "application/octet-stream");
+        /// <summary>
+        /// Download a file from blazor context to the browser
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="bytes">The bytes of the file</param>
+        /// <param name="contentType">The file content type</param>
+        /// <returns></returns>
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, string contentType = "application/octet-stream");
+        /// <summary>
+        /// Download a file from blazor context to the browser
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="bytes">The bytes of the file</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <param name="contentType">The file content type</param>
+        /// <returns></returns>
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, string contentType = "application/octet-stream");
+        /// <summary>
+        /// Download a file from blazor context to the browser
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="bytes">The bytes of the file</param>
+        /// <param name="timeOut">The timeout of the operation</param>
+        /// <param name="contentType">The file content type</param>
+        /// <returns></returns>
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, string contentType = "application/octet-stream");
         /// <summary>
         ///  Download a file from blazor context to the browser.
         /// </summary>
@@ -206,7 +206,7 @@ namespace BlazorDownloadFile
         /// <param name="stream">The stream of the file</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, Stream stream, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, string contentType = "application/octet-stream");
         /// <summary>
         ///  Download a file from blazor context to the browser.
         /// </summary>
@@ -216,7 +216,7 @@ namespace BlazorDownloadFile
         /// <param name="cancellationTokenJavaScriptInterop">The cancellation token when executing javascript</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, string contentType = "application/octet-stream");
         /// <summary>
         ///  Download a file from blazor context to the browser.
         /// </summary>
@@ -226,7 +226,7 @@ namespace BlazorDownloadFile
         /// <param name="timeOutJavaScriptInterop">The timeout when executing javascript</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, string contentType = "application/octet-stream");
         /// <summary>
         /// Download a file from blazor context to the brower
         /// </summary>
@@ -234,7 +234,7 @@ namespace BlazorDownloadFile
         /// <param name="plainText">The plain text</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFileFromText(string fileName, string plainText, string contentType = "text/plain");
+        ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, string contentType = "text/plain");
         /// <summary>
         /// Download a file from blazor context to the brower
         /// </summary>
@@ -243,7 +243,7 @@ namespace BlazorDownloadFile
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, string contentType = "text/plain");
+        ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, string contentType = "text/plain");
         /// <summary>
         /// Download a file from blazor context to the brower
         /// </summary>
@@ -252,7 +252,7 @@ namespace BlazorDownloadFile
         /// <param name="timeOut">The timeout of the operation</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, string contentType = "text/plain");
+        ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, string contentType = "text/plain");
         /// <summary>
         /// Download a file from blazor context to the browser 
         /// </summary>
@@ -261,7 +261,7 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, string bytesBase64, int bufferSize = 32768, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, int bufferSize = 32768, string contentType = "application/octet-stream");
         /// <summary>
         /// Download a file from blazor context to the browser 
         /// </summary>
@@ -271,7 +271,7 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream");
         /// <summary>
         /// Download a file from blazor context to the browser 
         /// </summary>
@@ -281,7 +281,7 @@ namespace BlazorDownloadFile
         /// <param name="timeOut">The timeout of the operation</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream");
         /// <summary>
         /// Download a file from blazor context to the browser
         /// </summary>
@@ -290,36 +290,7 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, byte[] bytes, int bufferSize = 32768, string contentType = "application/octet-stream");
-        /// <summary>
-        /// Download a file from blazor context to the browser
-        /// </summary>
-        /// <param name="fileName">The filename</param>
-        /// <param name="bytes">The bytes of the file</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <param name="bufferSize">The buffer size</param>
-        /// <param name="contentType">The file content type</param>
-        /// <returns></returns>
-        ValueTask DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream");
-        /// <summary>
-        /// Download a file from blazor context to the browser
-        /// </summary>
-        /// <param name="fileName">The filename</param>
-        /// <param name="bytes">The bytes of the file</param>
-        /// <param name="timeOut">The timeout of the operation</param>
-        /// <param name="bufferSize">The buffer size</param>
-        /// <param name="contentType">The file content type</param>
-        /// <returns></returns>
-        ValueTask DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream");
-        /// <summary>
-        /// Download a file from blazor context to the browser
-        /// </summary>
-        /// <param name="fileName">The filename</param>
-        /// <param name="bytes">The bytes of the file</param>
-        /// <param name="bufferSize">The buffer size</param>
-        /// <param name="contentType">The file content type</param>
-        /// <returns></returns>
-        ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, int bufferSize = 32768, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, int bufferSize = 32768, string contentType = "application/octet-stream");
         /// <summary>
         /// Download a file from blazor context to the browser
         /// </summary>
@@ -329,7 +300,7 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream");
         /// <summary>
         /// Download a file from blazor context to the browser
         /// </summary>
@@ -339,7 +310,36 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream");
+        /// <summary>
+        /// Download a file from blazor context to the browser
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="bytes">The bytes of the file</param>
+        /// <param name="bufferSize">The buffer size</param>
+        /// <param name="contentType">The file content type</param>
+        /// <returns></returns>
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, int bufferSize = 32768, string contentType = "application/octet-stream");
+        /// <summary>
+        /// Download a file from blazor context to the browser
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="bytes">The bytes of the file</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <param name="bufferSize">The buffer size</param>
+        /// <param name="contentType">The file content type</param>
+        /// <returns></returns>
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream");
+        /// <summary>
+        /// Download a file from blazor context to the browser
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="bytes">The bytes of the file</param>
+        /// <param name="timeOut">The timeout of the operation</param>
+        /// <param name="bufferSize">The buffer size</param>
+        /// <param name="contentType">The file content type</param>
+        /// <returns></returns>
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream");
         /// <summary>
         ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
         /// </summary>
@@ -348,7 +348,7 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, Stream stream, int bufferSize = 32768, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, int bufferSize = 32768, string contentType = "application/octet-stream");
         /// <summary>
         ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
         /// </summary>
@@ -359,7 +359,7 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream");
         /// <summary>
         ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
         /// </summary>
@@ -370,7 +370,7 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream");
+        ValueTask<DowloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream");
         /// <summary>
         /// Download a file from blazor context to the brower
         /// </summary>
@@ -379,7 +379,7 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFileFromText(string fileName, string plainText, int bufferSize = 32768, string contentType = "text/plain");
+        ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, int bufferSize = 32768, string contentType = "text/plain");
         /// <summary>
         /// Download a file from blazor context to the brower
         /// </summary>
@@ -389,7 +389,7 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "text/plain");
+        ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "text/plain");
         /// <summary>
         /// Download a file from blazor context to the brower
         /// </summary>
@@ -399,6 +399,6 @@ namespace BlazorDownloadFile
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <returns></returns>
-        ValueTask DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, int bufferSize = 32768, string contentType = "text/plain");
+        ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, int bufferSize = 32768, string contentType = "text/plain");
     }
 }
