@@ -8,15 +8,15 @@
     <PackageProjectUrl>https://github.com/arivera12/BlazorDownloadFile</PackageProjectUrl>
     <RepositoryUrl>https://github.com/arivera12/BlazorDownloadFile</RepositoryUrl>
     <RepositoryType>blazor, c#</RepositoryType>
-    <PackageReleaseNotes>Implemented AddBuffer, ClearBuffers, DownloadBase64Buffers and DownloadBinaryBuffers. Increased performance by initializing all JavaScript methods and variables in DownloadFileService constructor the initial variables and methods to perform the task. All functions with eval have been removed. Removed internal initialization call on all methods by instead of using null to clear buffer used new Array() instead. Fixes https://github.com/arivera12/BlazorDownloadFile/issues/7. Added AnyBuffer and BuffersCount methods https://github.com/arivera12/BlazorDownloadFile/issues/17. Added condition if user navigates to another page loaded buffers will get cleared automatically. Improved DownloadBase64Buffers and DownloadBinaryBuffers methods documentation. Added clear buffers in methods that pushes into buffer before loading the new buffers to preven duplicates on any kind of situation. Adds enhancement https://github.com/arivera12/BlazorDownloadFile/issues/16. Adds enhancement https://github.com/arivera12/BlazorDownloadFile/issues/15</PackageReleaseNotes>
+    <PackageReleaseNotes>Added overloads CancellationToken and TimeSpan to DownloadBase64Buffers and DownloadBinaryBuffers. Fix https://github.com/arivera12/BlazorDownloadFile/issues/18.</PackageReleaseNotes>
     <Authors>Anthony G. Rivera Cosme</Authors>
     <Company></Company>
     <Copyright>Anthony G. Rivera Cosme</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <Version>2.1.0</Version>
-    <AssemblyVersion>2.1.0.0</AssemblyVersion>
-    <FileVersion>2.1.0.0</FileVersion>
+    <Version>2.1.1</Version>
+    <AssemblyVersion>2.1.0.1</AssemblyVersion>
+    <FileVersion>2.1.0.1</FileVersion>
   </PropertyGroup>
 
 

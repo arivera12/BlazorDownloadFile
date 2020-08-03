@@ -176,6 +176,28 @@ namespace BlazorDownloadFile
             return JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileBase64StringPartitioned", fileName, contentType);
         }
         /// <summary>
+        /// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a base64 string. 
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="cancellationToken">the cancellation token</param>
+        /// <param name="contentType">The content type</param>
+        /// <returns></returns>
+        public ValueTask<DowloadFileResult> DownloadBase64Buffers(string fileName, CancellationToken cancellationToken, string contentType = "application/octet-stream")
+        {
+            return JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileBase64StringPartitioned", cancellationToken, fileName, contentType);
+        }
+        /// <summary>
+        /// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a base64 string. 
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="timeOut">The timeout</param>
+        /// <param name="contentType">The content type</param>
+        /// <returns></returns>
+        public ValueTask<DowloadFileResult> DownloadBase64Buffers(string fileName, TimeSpan timeOut, string contentType = "application/octet-stream")
+        {
+            return JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileBase64StringPartitioned", timeOut, fileName, contentType);
+        }
+        /// <summary>
         /// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a byte array, byte enumerable or a stream. 
         /// </summary>
         /// <param name="fileName">The filename</param>
@@ -184,6 +206,28 @@ namespace BlazorDownloadFile
         public ValueTask<DowloadFileResult> DownloadBinaryBuffers(string fileName, string contentType = "application/octet-stream")
         {
             return JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
+        }
+        /// <summary>
+        /// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a byte array, byte enumerable or a stream. 
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="cancellationToken">the cancellation token</param>
+        /// <param name="contentType">The content type</param>
+        /// <returns></returns>
+        public ValueTask<DowloadFileResult> DownloadBinaryBuffers(string fileName, CancellationToken cancellationToken, string contentType = "application/octet-stream")
+        {
+            return JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileByteArrayPartitioned", cancellationToken, fileName, contentType);
+        }
+        /// <summary>
+        /// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a byte array, byte enumerable or a stream. 
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="timeOut">The timeout</param>
+        /// <param name="contentType">The content type</param>
+        /// <returns></returns>
+        public ValueTask<DowloadFileResult> DownloadBinaryBuffers(string fileName, TimeSpan timeOut, string contentType = "application/octet-stream")
+        {
+            return JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileByteArrayPartitioned", timeOut, fileName, contentType);
         }
         /// <summary>
         /// Download a file from blazor context to the browser 
