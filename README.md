@@ -2,7 +2,7 @@
 
 <p>
 	<a href="https://www.nuget.org/packages/BlazorDownloadFile">
-	    <img src="https://buildstats.info/nuget/BlazorDownloadFile?v=2.1.0" />
+	    <img src="https://buildstats.info/nuget/BlazorDownloadFile?v=2.1.2" />
 	</a>
 	<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RSE2NMEG3F7QU&source=url">
 	    <img src="https://img.shields.io/badge/Donate-PayPal-green.svg" />
@@ -15,15 +15,15 @@ Blazor download files to the browser from c# without any JavaScript library or d
 
 BlazorDownloadFile is the solution to saving files on the client-side, and is perfect for web apps that generates files on the client. 
 
-However if the file is coming from the server we recommend you to first try to use Content-Disposition attachment response header as it has more cross-browser compatiblity.
+However if the file is coming from the server we recommend you to first try to use Content-Disposition attachment response header as it has more cross-browser compatibility.
 
 ## Installation
 
-`Install-Package BlazorDownloadFile -Version 2.1.0`
+`Install-Package BlazorDownloadFile -Version 2.1.2`
 
 ## Register the service in your services method
 
-`services.AddBlazorDownloadFile();`
+`services.AddBlazorDownloadFile(ServiceLifetime lifetime = ServiceLifetime.Scoped);`
 
 ## No javascript library reference dependency
 
@@ -54,7 +54,11 @@ ValueTask<bool> AnyBuffer();
 ValueTask<int> BuffersCount();
 ValueTask ClearBuffers();
 ValueTask<DowloadFileResult> DownloadBase64Buffers(string fileName, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadBase64Buffers(string fileName, CancellationToken cancellationToken, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadBase64Buffers(string fileName, TimeSpan timeOut, string contentType = "application/octet-stream");
 ValueTask<DowloadFileResult> DownloadBinaryBuffers(string fileName, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadBinaryBuffers(string fileName, CancellationToken cancellationToken, string contentType = "application/octet-stream");
+ValueTask<DowloadFileResult> DownloadBinaryBuffers(string fileName, TimeSpan timeOut, string contentType = "application/octet-stream");
 ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, string contentType = "application/octet-stream");
 ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, string contentType = "application/octet-stream");
 ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, string contentType = "application/octet-stream");
