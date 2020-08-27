@@ -25,6 +25,8 @@ However if the file is coming from the server we recommend you to first try to u
 
 `services.AddBlazorDownloadFile(ServiceLifetime lifetime = ServiceLifetime.Scoped);`
 
+Note: `ServiceLifetime.Singleton` is not supported.
+
 ## No javascript library reference dependency
 
 Since version 1.0.6. 
