@@ -19,7 +19,7 @@ However if the file is coming from the server we recommend you to first try to u
 
 ## Installation
 
-`Install-Package BlazorDownloadFile -Version 2.1.3`
+`Install-Package BlazorDownloadFile -Version 2.1.4`
 
 ## Register the service in your services method
 
