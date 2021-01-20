@@ -11,7 +11,7 @@ namespace BlazorDownloadFile
         /// </summary>
         /// <param name="plainText"></param>
         /// <returns></returns>
-        public static string ToBase64Encode(this string plainText, bool encoderShouldEmitUTF8Identifier = true)
+        public static string ToBase64Encode(this string plainText, bool encoderShouldEmitUTF8Identifier)
         {
             if(encoderShouldEmitUTF8Identifier)
             {

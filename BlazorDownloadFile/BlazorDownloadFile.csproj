@@ -9,16 +9,15 @@
     <PackageProjectUrl>https://github.com/arivera12/BlazorDownloadFile</PackageProjectUrl>
     <RepositoryUrl>https://github.com/arivera12/BlazorDownloadFile</RepositoryUrl>
     <RepositoryType>blazor, c#</RepositoryType>
-    <PackageReleaseNotes>Fix https://github.com/arivera12/BlazorDownloadFile/issues/22
-Changed BOM implementation to use GetPreamble() method instead of constructor with BOM.</PackageReleaseNotes>
+    <PackageReleaseNotes>Changed encoderShouldEmitUTF8Identifier = false as default.</PackageReleaseNotes>
     <Authors>Anthony G. Rivera Cosme</Authors>
     <Company></Company>
     <Copyright>Anthony G. Rivera Cosme</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <Version>2.1.5</Version>
-    <AssemblyVersion>2.1.0.5</AssemblyVersion>
-    <FileVersion>2.1.0.5</FileVersion>
+    <Version>2.1.6</Version>
+    <AssemblyVersion>2.1.0.6</AssemblyVersion>
+    <FileVersion>2.1.0.6</FileVersion>
   </PropertyGroup>
 
 
