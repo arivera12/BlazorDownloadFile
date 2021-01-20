@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 
 namespace BlazorDownloadFile
@@ -12,7 +13,14 @@ namespace BlazorDownloadFile
         /// <returns></returns>
         public static string ToBase64Encode(this string plainText, bool encoderShouldEmitUTF8Identifier = true)
         {
-            return Convert.ToBase64String(new UTF8Encoding(encoderShouldEmitUTF8Identifier).GetBytes(plainText));
+            if(encoderShouldEmitUTF8Identifier)
+            {
+                return Convert.ToBase64String(Encoding.UTF8.GetPreamble().Concat(Encoding.UTF8.GetBytes(plainText)).ToArray());
+            }
+            else
+            {
+                return Convert.ToBase64String(Encoding.UTF8.GetBytes(plainText));
+            } 
         }
     }
 }
