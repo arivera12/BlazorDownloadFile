@@ -10,9 +10,9 @@ namespace BlazorDownloadFile
         /// </summary>
         /// <param name="plainText"></param>
         /// <returns></returns>
-        public static string ToBase64Encode(this string plainText)
+        public static string ToBase64Encode(this string plainText, bool encoderShouldEmitUTF8Identifier = true)
         {
-            return Convert.ToBase64String(Encoding.UTF8.GetBytes(plainText));
+            return Convert.ToBase64String(new UTF8Encoding(encoderShouldEmitUTF8Identifier).GetBytes(plainText));
         }
     }
 }

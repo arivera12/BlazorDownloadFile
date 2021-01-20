@@ -195,19 +195,19 @@ namespace BlazorDownloadFile
             return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileBase64String", timeOutJavaScriptInterop, fileName, Convert.ToBase64String(await stream.ToByteArrayAsync(cancellationTokenBytesRead)), contentType);
         }
         /// <inheritdoc/>
-        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, string contentType = "text/plain")
+        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, string contentType = "text/plain", bool encoderShouldEmitUTF8Identifier = true)
         {
-            return DownloadFile(fileName, plainText.ToBase64Encode(), contentType);
+            return DownloadFile(fileName, plainText.ToBase64Encode(encoderShouldEmitUTF8Identifier), contentType);
         }
         /// <inheritdoc/>
-        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, string contentType = "text/plain")
+        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, string contentType = "text/plain", bool encoderShouldEmitUTF8Identifier = true)
         {
-            return DownloadFile(fileName, plainText.ToBase64Encode(), cancellationToken, contentType);
+            return DownloadFile(fileName, plainText.ToBase64Encode(encoderShouldEmitUTF8Identifier), cancellationToken, contentType);
         }
         /// <inheritdoc/>
-        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, string contentType = "text/plain")
+        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, string contentType = "text/plain", bool encoderShouldEmitUTF8Identifier = true)
         {
-            return DownloadFile(fileName, plainText.ToBase64Encode(), timeOut, contentType);
+            return DownloadFile(fileName, plainText.ToBase64Encode(encoderShouldEmitUTF8Identifier), timeOut, contentType);
         }
         /// <inheritdoc/>
         public async ValueTask<DowloadFileResult> DownloadFile(string fileName, string bytesBase64, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null)
@@ -396,19 +396,19 @@ namespace BlazorDownloadFile
             return await JSRuntime.InvokeAsync<DowloadFileResult>("_blazorDowloadFileByteArrayPartitioned", timeOutJavaScriptInterop, fileName, contentType);
         }
         /// <inheritdoc/>
-        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null)
+        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null, bool encoderShouldEmitUTF8Identifier = true)
         {
-            return DownloadFile(fileName, plainText.ToBase64Encode(), bufferSize, contentType, progress);
+            return DownloadFile(fileName, plainText.ToBase64Encode(encoderShouldEmitUTF8Identifier), bufferSize, contentType, progress);
         }
         /// <inheritdoc/>
-        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null)
+        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null, bool encoderShouldEmitUTF8Identifier = true)
         {
-            return DownloadFile(fileName, plainText.ToBase64Encode(), cancellationToken, bufferSize, contentType, progress);
+            return DownloadFile(fileName, plainText.ToBase64Encode(encoderShouldEmitUTF8Identifier), cancellationToken, bufferSize, contentType, progress);
         }
         /// <inheritdoc/>
-        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null)
+        public ValueTask<DowloadFileResult> DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null, bool encoderShouldEmitUTF8Identifier = true)
         {
-            return DownloadFile(fileName, plainText.ToBase64Encode(), timeOut, bufferSize, contentType, progress);
+            return DownloadFile(fileName, plainText.ToBase64Encode(encoderShouldEmitUTF8Identifier), timeOut, bufferSize, contentType, progress);
         }
         /// <summary>
         /// Parts any collection type by the buffer size.
