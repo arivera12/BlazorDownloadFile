@@ -1,6 +1,6 @@
 ﻿namespace BlazorDownloadFile
 {
-    public class DowloadFileResult
+    public class DownloadFileResult
     {
         public string ErrorMessage { get; set; }
         public string ErrorName { get; set; }

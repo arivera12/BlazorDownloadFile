@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDownloadFile", "Blazo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDownloadFile.Demo", "BlazorDownloadFile.Demo\BlazorDownloadFile.Demo.csproj", "{2A36B29C-A4B5-4FBA-B029-F13D6D5FD414}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorDownloadFile.Server.Demo", "BlazorDownloadFile.Server.Demo\BlazorDownloadFile.Server.Demo.csproj", "{AA895297-0CEE-4563-85CC-64E3B8C013D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2A36B29C-A4B5-4FBA-B029-F13D6D5FD414}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A36B29C-A4B5-4FBA-B029-F13D6D5FD414}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A36B29C-A4B5-4FBA-B029-F13D6D5FD414}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA895297-0CEE-4563-85CC-64E3B8C013D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA895297-0CEE-4563-85CC-64E3B8C013D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA895297-0CEE-4563-85CC-64E3B8C013D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA895297-0CEE-4563-85CC-64E3B8C013D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

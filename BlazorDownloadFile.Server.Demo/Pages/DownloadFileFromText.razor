@@ -1,0 +1,56 @@
+﻿@page "/DownloadFileFromText"
+<h1>Download File From Text</h1>
+
+<button @onclick=@(async () => await BlazorDownloadFileService.DownloadFileFromText("test.json", json, "application/octet-stream"))>Dowload json from text</button>
+<br />
+<br />
+<pre>@json</pre>
+
+<button @onclick=@(async () => await BlazorDownloadFileService.DownloadFileFromText("test.csv", csv, "text/csv"))>Dowload csv from text</button>
+<br />
+<br />
+<pre>@csv</pre>
+
+@code {
+    [Inject] public IBlazorDownloadFileService BlazorDownloadFileService { get; set; }
+    string csv = @"""Name"",""StreetAddress""
+""Customer 1"",""Sölfang""
+""Customer 2"",""Skärholmen""
+""Customer 3"",""Trömso""
+""Customer 4"",""Fårsta Strand""
+""Customer 5"",""Gullmarsplan""
+""Customer 6"",""Råcksta""
+""Customer 7"",""Vällingby""";
+    string json = @"{
+TestData: [
+    {
+        Name: ""Customer 1"",
+        StreetAddress: ""Sölfang""
+    },
+    {
+        Name: ""Customer 2"",
+        StreetAddress: ""Skärholmen""
+    },
+    {
+        Name: ""Customer 3"",
+        StreetAddress: ""Trömso""
+    },
+    {
+        Name: ""Customer 4"",
+        StreetAddress: ""Fårsta Strand""
+    },
+    {
+        Name: ""Customer 5"",
+        StreetAddress: ""Gullmarsplan""
+    },
+    {
+        Name: ""Customer 6"",
+        StreetAddress: ""Råcksta""
+    },
+    {
+        Name: ""Customer 7"",
+        StreetAddress: ""Vällingby""
+    }
+]
+}";
+}
