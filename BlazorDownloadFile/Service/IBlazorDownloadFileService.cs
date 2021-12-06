@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -264,30 +265,33 @@ namespace BlazorDownloadFile
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="plainText">The plain text</param>
+        /// <param name="encoding">The enconding to use</param>
         /// <param name="contentType">The file content type</param>
-        /// <param name="encoderShouldEmitUTF8Identifier">true to specify that the System.Text.UTF8Encoding.GetPreamble method returns a Unicode byte order mark.</param>
+        /// <param name="encoderShouldEmitIdentifier">true to specify that the System.Text.Encoding.GetPreamble method returns a Unicode byte order mark.</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, string contentType = "text/plain", bool encoderShouldEmitUTF8Identifier = false);
+        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, string contentType = "text/plain", bool encoderShouldEmitIdentifier = false);
         /// <summary>
         /// Download a file from blazor context to the brower
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="plainText">The plain text</param>
+        /// <param name="encoding">The enconding to use</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="contentType">The file content type</param>
-        /// <param name="encoderShouldEmitUTF8Identifier">true to specify that the System.Text.UTF8Encoding.GetPreamble method returns a Unicode byte order mark.</param>
+        /// <param name="encoderShouldEmitIdentifier">true to specify that the System.Text.Encoding.GetPreamble method returns a Unicode byte order mark.</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, string contentType = "text/plain", bool encoderShouldEmitUTF8Identifier = false);
+        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, CancellationToken cancellationToken, string contentType = "text/plain", bool encoderShouldEmitIdentifier = false);
         /// <summary>
         /// Download a file from blazor context to the brower
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="plainText">The plain text</param>
+        /// <param name="encoding">The enconding to use</param>
         /// <param name="timeOut">The timeout of the operation</param>
         /// <param name="contentType">The file content type</param>
-        /// <param name="encoderShouldEmitUTF8Identifier">true to specify that the System.Text.UTF8Encoding.GetPreamble method returns a Unicode byte order mark.</param>
+        /// <param name="encoderShouldEmitIdentifier">true to specify that the System.Text.Encoding.GetPreamble method returns a Unicode byte order mark.</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, string contentType = "text/plain", bool encoderShouldEmitUTF8Identifier = false);
+        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, TimeSpan timeOut, string contentType = "text/plain", bool encoderShouldEmitIdentifier = false);
         /// <summary>
         /// Download a file from blazor context to the browser 
         /// </summary>
@@ -423,35 +427,38 @@ namespace BlazorDownloadFile
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="plainText">The plain text</param>
+        /// <param name="encoding">The enconding to use</param>
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <param name="progress">The progress percent of data transfered</param>
-        /// <param name="encoderShouldEmitUTF8Identifier">true to specify that the System.Text.UTF8Encoding.GetPreamble method returns a Unicode byte order mark.</param>
+        /// <param name="encoderShouldEmitIdentifier">true to specify that the System.Text.Encoding.GetPreamble method returns a Unicode byte order mark.</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null, bool encoderShouldEmitUTF8Identifier = false);
+        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null, bool encoderShouldEmitIdentifier = false);
         /// <summary>
         /// Download a file from blazor context to the brower
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="plainText">The plain text</param>
+        /// <param name="encoding">The enconding to use</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <param name="progress">The progress percent of data transfered</param>
-        /// <param name="encoderShouldEmitUTF8Identifier">true to specify that the System.Text.UTF8Encoding.GetPreamble method returns a Unicode byte order mark.</param>
+        /// <param name="encoderShouldEmitIdentifier">true to specify that the System.Text.Encoding.GetPreamble method returns a Unicode byte order mark.</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null, bool encoderShouldEmitUTF8Identifier = false);
+        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null, bool encoderShouldEmitIdentifier = false);
         /// <summary>
         /// Download a file from blazor context to the brower
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="plainText">The plain text</param>
+        /// <param name="encoding">The enconding to use</param>
         /// <param name="timeOut">The timeout of the operation</param>
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>
         /// <param name="progress">The progress percent of data transfered</param>
-        /// <param name="encoderShouldEmitUTF8Identifier">true to specify that the System.Text.UTF8Encoding.GetPreamble method returns a Unicode byte order mark.</param>
+        /// <param name="encoderShouldEmitIdentifier">true to specify that the System.Text.Encoding.GetPreamble method returns a Unicode byte order mark.</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, TimeSpan timeOut, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null, bool encoderShouldEmitUTF8Identifier = false);
+        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, TimeSpan timeOut, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null, bool encoderShouldEmitIdentifier = false);
     }
 }

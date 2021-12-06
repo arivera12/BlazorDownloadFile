@@ -9,15 +9,15 @@
     <PackageProjectUrl>https://github.com/arivera12/BlazorDownloadFile</PackageProjectUrl>
     <RepositoryUrl>https://github.com/arivera12/BlazorDownloadFile</RepositoryUrl>
     <RepositoryType>blazor, c#</RepositoryType>
-    <PackageReleaseNotes>Added compatibility with net5 and net6 as well should be supported.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added support for file encoding for methods DownloadFileFromText.</PackageReleaseNotes>
     <Authors>Anthony G. Rivera Cosme</Authors>
     <Company></Company>
     <Copyright>Anthony G. Rivera Cosme</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <Version>2.2.0.0</Version>
-    <AssemblyVersion>2.2.0.0</AssemblyVersion>
-    <FileVersion>2.2.0.0</FileVersion>
+    <Version>2.3.0.0</Version>
+    <AssemblyVersion>2.3.0.0</AssemblyVersion>
+    <FileVersion>2.3.0.0</FileVersion>
   </PropertyGroup>
 
 
