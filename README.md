@@ -2,7 +2,7 @@
 
 <p>
 	<a href="https://www.nuget.org/packages/BlazorDownloadFile">
-	    <img src="https://buildstats.info/nuget/BlazorDownloadFile?v=2.1.6" />
+	    <img src="https://buildstats.info/nuget/BlazorDownloadFile?v=2.2.0" />
 	</a>
 	<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RSE2NMEG3F7QU&source=url">
 	    <img src="https://img.shields.io/badge/Donate-PayPal-green.svg" />
@@ -19,7 +19,7 @@ However if the file is coming from the server we recommend you to first try to u
 
 ## Installation
 
-`Install-Package BlazorDownloadFile -Version 2.1.6`
+`Install-Package BlazorDownloadFile -Version 2.2.0`
 
 ## Register the service in your services method
 
