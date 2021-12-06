@@ -1,6 +1,6 @@
 ﻿namespace BlazorDownloadFile
 {
-    internal class DownloadFileScript
+    internal class BlazorDownloadFileScript
     {
         /// <summary>
         /// Initializes BlazorDownloadFile on JavaScript

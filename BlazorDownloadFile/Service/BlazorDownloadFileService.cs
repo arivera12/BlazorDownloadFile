@@ -22,7 +22,7 @@ namespace BlazorDownloadFile
         public BlazorDownloadFileService(IJSRuntime jSRuntime)
         {
             JSRuntime = jSRuntime;
-            Task.Run(async () => await JSRuntime.InvokeVoidAsync("eval", DownloadFileScript.InitializeBlazorDownloadFile()));
+            Task.Run(async () => await JSRuntime.InvokeVoidAsync("eval", BlazorDownloadFileScript.InitializeBlazorDownloadFile()));
         }
         /// <inheritdoc/>
         public ValueTask AddBuffer(string bytesBase64)
