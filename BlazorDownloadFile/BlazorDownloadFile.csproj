@@ -9,17 +9,15 @@
     <PackageProjectUrl>https://github.com/arivera12/BlazorDownloadFile</PackageProjectUrl>
     <RepositoryUrl>https://github.com/arivera12/BlazorDownloadFile</RepositoryUrl>
     <RepositoryType>blazor, c#</RepositoryType>
-    <PackageReleaseNotes>fix https://github.com/arivera12/BlazorDownloadFile/issues/26
-
-Throwing exception when using Content-Security-Policy "script-src 'self' " header</PackageReleaseNotes>
+    <PackageReleaseNotes>Fix of fraction portion loss for progress reporting</PackageReleaseNotes>
     <Authors>Anthony G. Rivera Cosme</Authors>
     <Company></Company>
     <Copyright>Anthony G. Rivera Cosme</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <Version>2.3.1.0</Version>
-    <AssemblyVersion>2.3.1.0</AssemblyVersion>
-    <FileVersion>2.3.1.0</FileVersion>
+    <Version>2.3.1.1</Version>
+    <AssemblyVersion>2.3.1.1</AssemblyVersion>
+    <FileVersion>2.3.1.1</FileVersion>
   </PropertyGroup>
 
 
