@@ -276,6 +276,20 @@ namespace BlazorDownloadFile
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
         }
         /// <inheritdoc/>
+        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, byte[] bytes, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task>? progress = null)
+        {
+            await ClearBuffers();
+            var bytesReaded = 0;
+            foreach (var partFile in Partition(bytes, bufferSize))
+            {
+                bytesReaded += partFile.Count;
+                var totalProgress = (double)bytesReaded / bytes.Length;
+                await progress?.Invoke(totalProgress);
+                await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", partFile);
+            }
+            return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
+        }
+        /// <inheritdoc/>
         public async ValueTask<DownloadFileResult> DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null)
         {
             await ClearBuffers();

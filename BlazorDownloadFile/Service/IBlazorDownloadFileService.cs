@@ -339,6 +339,16 @@ namespace BlazorDownloadFile
         /// </summary>
         /// <param name="fileName">The filename</param>
         /// <param name="bytes">The bytes of the file</param>
+        /// <param name="bufferSize">The buffer size</param>
+        /// <param name="contentType">The file content type</param>
+        /// <param name="progress">The progress percent of data transfered</param>
+        /// <returns></returns>
+        ValueTask<DownloadFileResult> DownloadFile(string fileName, byte[] bytes, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task>? progress = null);
+        /// <summary>
+        /// Download a file from blazor context to the browser
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="bytes">The bytes of the file</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="bufferSize">The buffer size</param>
         /// <param name="contentType">The file content type</param>

@@ -15,9 +15,9 @@
     <Copyright>Anthony G. Rivera Cosme</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <Version>2.3.1.1</Version>
-    <AssemblyVersion>2.3.1.1</AssemblyVersion>
-    <FileVersion>2.3.1.1</FileVersion>
+    <Version>2.3.1.2</Version>
+    <AssemblyVersion>2.3.1.2</AssemblyVersion>
+    <FileVersion>2.3.1.2</FileVersion>
   </PropertyGroup>
 
 
