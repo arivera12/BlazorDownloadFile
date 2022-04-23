@@ -2,11 +2,11 @@
 
 <p>
 	<a href="https://www.nuget.org/packages/BlazorDownloadFile">
-	    <img src="https://buildstats.info/nuget/BlazorDownloadFile?v=2.3.1.1" />
+	    <img src="https://buildstats.info/nuget/BlazorDownloadFile?v=2.4.0.0" />
 	</a>
-	<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RSE2NMEG3F7QU&source=url">
+	<!--<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RSE2NMEG3F7QU&source=url">
 	    <img src="https://img.shields.io/badge/Donate-PayPal-green.svg" />
-	</a>
+	</a>-->
 </p>
 
 ![](BlazorDownloadFileDemo.gif)
