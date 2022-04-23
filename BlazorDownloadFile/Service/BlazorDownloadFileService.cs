@@ -220,7 +220,7 @@ namespace BlazorDownloadFile
             return DownloadFile(fileName, plainText.ToBase64Encode(encoding, encoderShouldEmitUTF8Identifier), timeOut, contentType);
         }
         /// <inheritdoc/>
-        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null)
+        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null)
         {
             await ClearBuffers();
             var bytesReaded = 0;
@@ -228,13 +228,13 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytesBase64.Length;
-                progress?.Report(totalProgress);
+                progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", string.Join("", partFile));
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileBase64StringPartitioned", fileName, contentType);
         }
         /// <inheritdoc/>
-        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null)
+        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null)
         {
             await ClearBuffers();
             var bytesReaded = 0;
@@ -242,13 +242,13 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytesBase64.Length;
-                progress?.Report(totalProgress);
+                progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationToken, string.Join("", partFile));
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileBase64StringPartitioned", cancellationToken, fileName, contentType);
         }
         /// <inheritdoc/>
-        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null)
+        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null)
         {
             await ClearBuffers();
             var bytesReaded = 0;
@@ -256,13 +256,13 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytesBase64.Length;
-                progress?.Report(totalProgress);
+                progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOut, string.Join("", partFile));
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileBase64StringPartitioned", timeOut, fileName, contentType);
         }
         /// <inheritdoc/>
-        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, byte[] bytes, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null)
+        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, byte[] bytes, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null)
         {
             await ClearBuffers();
             var bytesReaded = 0;
@@ -270,13 +270,13 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytes.Length;
-                progress?.Report(totalProgress);
+                progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", partFile);
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
         }
         /// <inheritdoc/>
-        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null)
+        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null)
         {
             await ClearBuffers();
             var bytesReaded = 0;
@@ -284,13 +284,13 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytes.Length;
-                progress?.Report(totalProgress);
+                progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationToken, partFile);
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", cancellationToken, fileName, contentType);
         }
         /// <inheritdoc/>
-        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null)
+        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null)
         {
             await ClearBuffers();
             var bytesReaded = 0;
@@ -298,13 +298,13 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytes.Length;
-                progress?.Report(totalProgress);
+                progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOut, partFile);
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", timeOut, fileName, contentType);
         }
         /// <inheritdoc/>
-        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null)
+        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null)
         {
             await ClearBuffers();
             var bytesReaded = 0;
@@ -313,13 +313,13 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytesLength;
-                progress?.Report(totalProgress);
+                progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", partFile);
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
         }
         /// <inheritdoc/>
-        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null)
+        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null)
         {
             await ClearBuffers();
             var bytesReaded = 0;
@@ -328,13 +328,13 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytesLength;
-                progress?.Report(totalProgress);
+                progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationToken, partFile);
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", cancellationToken, fileName, contentType);
         }
         /// <inheritdoc/>
-        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null)
+        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null)
         {
             await ClearBuffers();
             var bytesReaded = 0;
@@ -343,13 +343,13 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytesLength;
-                progress?.Report(totalProgress);
+                progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOut, partFile);
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", timeOut, fileName, contentType);
         }
         /// <inheritdoc/>
-        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, Stream stream, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null)
+        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, Stream stream, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null)
         {
             await ClearBuffers();
             var totalOfBytes = (int)stream.Length;
@@ -362,13 +362,13 @@ namespace BlazorDownloadFile
                 totalOfBytesReaded += await stream.ReadAsync(buffer, 0, currentBufferSize);
                 pendingBytesToRead -= totalOfBytesReaded;
                 var totalProgress = (double)totalOfBytesReaded / totalOfBytes;
-                progress?.Report(totalProgress);
+                progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", buffer.Select(b => b));
             } while (pendingBytesToRead > 0);
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
         }
         /// <inheritdoc/>
-        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null)
+        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null)
         {
             await ClearBuffers();
             var totalOfBytes = (int)stream.Length;
@@ -381,13 +381,13 @@ namespace BlazorDownloadFile
                 totalOfBytesReaded += await stream.ReadAsync(buffer, 0, currentBufferSize, cancellationTokenBytesRead);
                 pendingBytesToRead -= totalOfBytesReaded;
                 var totalProgress = (double)totalOfBytesReaded / totalOfBytes;
-                progress?.Report(totalProgress);
+                progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationTokenJavaScriptInterop, buffer.Select(b => b));
             } while (pendingBytesToRead > 0);
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", cancellationTokenJavaScriptInterop, fileName, contentType);
         }
         /// <inheritdoc/>
-        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null)
+        public async ValueTask<DownloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null)
         {
             await ClearBuffers();
             var totalOfBytes = (int)stream.Length;
@@ -400,23 +400,23 @@ namespace BlazorDownloadFile
                 totalOfBytesReaded += await stream.ReadAsync(buffer, 0, currentBufferSize, cancellationTokenBytesRead);
                 pendingBytesToRead -= totalOfBytesReaded;
                 var totalProgress = (double)totalOfBytesReaded / totalOfBytes;
-                progress?.Report(totalProgress);
+                progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOutJavaScriptInterop, buffer.Select(b => b));
             } while (pendingBytesToRead > 0);
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", timeOutJavaScriptInterop, fileName, contentType);
         }
         /// <inheritdoc/>
-        public ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null, bool encoderShouldEmitUTF8Identifier = false)
+        public ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, int bufferSize = 32768, string contentType = "text/plain", Func<double, Task> progress = null, bool encoderShouldEmitUTF8Identifier = false)
         {
             return DownloadFile(fileName, plainText.ToBase64Encode(encoding, encoderShouldEmitUTF8Identifier), bufferSize, contentType, progress);
         }
         /// <inheritdoc/>
-        public ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null, bool encoderShouldEmitUTF8Identifier = false)
+        public ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "text/plain", Func<double, Task> progress = null, bool encoderShouldEmitUTF8Identifier = false)
         {
             return DownloadFile(fileName, plainText.ToBase64Encode(encoding, encoderShouldEmitUTF8Identifier), cancellationToken, bufferSize, contentType, progress);
         }
         /// <inheritdoc/>
-        public ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, TimeSpan timeOut, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null, bool encoderShouldEmitUTF8Identifier = false)
+        public ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, TimeSpan timeOut, int bufferSize = 32768, string contentType = "text/plain", Func<double, Task> progress = null, bool encoderShouldEmitUTF8Identifier = false)
         {
             return DownloadFile(fileName, plainText.ToBase64Encode(encoding, encoderShouldEmitUTF8Identifier), timeOut, bufferSize, contentType, progress);
         }

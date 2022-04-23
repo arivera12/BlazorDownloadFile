@@ -301,7 +301,7 @@ namespace BlazorDownloadFile
         /// <param name="contentType">The file content type</param>
         /// <param name="progress">The progress percent of data transfered</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null);
+        ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null);
         /// <summary>
         /// Download a file from blazor context to the browser 
         /// </summary>
@@ -312,7 +312,7 @@ namespace BlazorDownloadFile
         /// <param name="contentType">The file content type</param>
         /// <param name="progress">The progress percent of data transfered</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null);
+        ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null);
         /// <summary>
         /// Download a file from blazor context to the browser 
         /// </summary>
@@ -323,7 +323,7 @@ namespace BlazorDownloadFile
         /// <param name="contentType">The file content type</param>
         /// <param name="progress">The progress percent of data transfered</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null);
+        ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null);
         /// <summary>
         /// Download a file from blazor context to the browser
         /// </summary>
@@ -333,39 +333,7 @@ namespace BlazorDownloadFile
         /// <param name="contentType">The file content type</param>
         /// <param name="progress">The progress percent of data transfered</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFile(string fileName, byte[] bytes, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null);
-        /// <summary>
-        /// Download a file from blazor context to the browser
-        /// </summary>
-        /// <param name="fileName">The filename</param>
-        /// <param name="bytes">The bytes of the file</param>
-        /// <param name="cancellationToken">The cancellation token</param>
-        /// <param name="bufferSize">The buffer size</param>
-        /// <param name="contentType">The file content type</param>
-        /// <param name="progress">The progress percent of data transfered</param>
-        /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null);
-        /// <summary>
-        /// Download a file from blazor context to the browser
-        /// </summary>
-        /// <param name="fileName">The filename</param>
-        /// <param name="bytes">The bytes of the file</param>
-        /// <param name="timeOut">The timeout of the operation</param>
-        /// <param name="bufferSize">The buffer size</param>
-        /// <param name="contentType">The file content type</param>
-        /// <param name="progress">The progress percent of data transfered</param>
-        /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null);
-        /// <summary>
-        /// Download a file from blazor context to the browser
-        /// </summary>
-        /// <param name="fileName">The filename</param>
-        /// <param name="bytes">The bytes of the file</param>
-        /// <param name="bufferSize">The buffer size</param>
-        /// <param name="contentType">The file content type</param>
-        /// <param name="progress">The progress percent of data transfered</param>
-        /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null);
+        ValueTask<DownloadFileResult> DownloadFile(string fileName, byte[] bytes, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null);
         /// <summary>
         /// Download a file from blazor context to the browser
         /// </summary>
@@ -376,7 +344,7 @@ namespace BlazorDownloadFile
         /// <param name="contentType">The file content type</param>
         /// <param name="progress">The progress percent of data transfered</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null);
+        ValueTask<DownloadFileResult> DownloadFile(string fileName, byte[] bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null);
         /// <summary>
         /// Download a file from blazor context to the browser
         /// </summary>
@@ -387,7 +355,39 @@ namespace BlazorDownloadFile
         /// <param name="contentType">The file content type</param>
         /// <param name="progress">The progress percent of data transfered</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null);
+        ValueTask<DownloadFileResult> DownloadFile(string fileName, byte[] bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null);
+        /// <summary>
+        /// Download a file from blazor context to the browser
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="bytes">The bytes of the file</param>
+        /// <param name="bufferSize">The buffer size</param>
+        /// <param name="contentType">The file content type</param>
+        /// <param name="progress">The progress percent of data transfered</param>
+        /// <returns></returns>
+        ValueTask<DownloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null);
+        /// <summary>
+        /// Download a file from blazor context to the browser
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="bytes">The bytes of the file</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <param name="bufferSize">The buffer size</param>
+        /// <param name="contentType">The file content type</param>
+        /// <param name="progress">The progress percent of data transfered</param>
+        /// <returns></returns>
+        ValueTask<DownloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null);
+        /// <summary>
+        /// Download a file from blazor context to the browser
+        /// </summary>
+        /// <param name="fileName">The filename</param>
+        /// <param name="bytes">The bytes of the file</param>
+        /// <param name="timeOut">The timeout of the operation</param>
+        /// <param name="bufferSize">The buffer size</param>
+        /// <param name="contentType">The file content type</param>
+        /// <param name="progress">The progress percent of data transfered</param>
+        /// <returns></returns>
+        ValueTask<DownloadFileResult> DownloadFile(string fileName, IEnumerable<byte> bytes, TimeSpan timeOut, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null);
         /// <summary>
         ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
         /// </summary>
@@ -397,7 +397,7 @@ namespace BlazorDownloadFile
         /// <param name="contentType">The file content type</param>
         /// <param name="progress">The progress percent of data transfered</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFile(string fileName, Stream stream, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null);
+        ValueTask<DownloadFileResult> DownloadFile(string fileName, Stream stream, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null);
         /// <summary>
         ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
         /// </summary>
@@ -409,7 +409,7 @@ namespace BlazorDownloadFile
         /// <param name="contentType">The file content type</param>
         /// <param name="progress">The progress percent of data transfered</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null);
+        ValueTask<DownloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, CancellationToken cancellationTokenJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null);
         /// <summary>
         ///  Download a file from blazor context to the browser. Please take note that this method doesn't reset the stream position to 0.
         /// </summary>
@@ -421,7 +421,7 @@ namespace BlazorDownloadFile
         /// <param name="contentType">The file content type</param>
         /// <param name="progress">The progress percent of data transfered</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null);
+        ValueTask<DownloadFileResult> DownloadFile(string fileName, Stream stream, CancellationToken cancellationTokenBytesRead, TimeSpan timeOutJavaScriptInterop, int bufferSize = 32768, string contentType = "application/octet-stream", Func<double, Task> progress = null);
         /// <summary>
         /// Download a file from blazor context to the brower
         /// </summary>
@@ -433,7 +433,7 @@ namespace BlazorDownloadFile
         /// <param name="progress">The progress percent of data transfered</param>
         /// <param name="encoderShouldEmitIdentifier">true to specify that the System.Text.Encoding.GetPreamble method returns a Unicode byte order mark.</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null, bool encoderShouldEmitIdentifier = false);
+        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, int bufferSize = 32768, string contentType = "text/plain", Func<double, Task> progress = null, bool encoderShouldEmitIdentifier = false);
         /// <summary>
         /// Download a file from blazor context to the brower
         /// </summary>
@@ -446,7 +446,7 @@ namespace BlazorDownloadFile
         /// <param name="progress">The progress percent of data transfered</param>
         /// <param name="encoderShouldEmitIdentifier">true to specify that the System.Text.Encoding.GetPreamble method returns a Unicode byte order mark.</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null, bool encoderShouldEmitIdentifier = false);
+        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "text/plain", Func<double, Task> progress = null, bool encoderShouldEmitIdentifier = false);
         /// <summary>
         /// Download a file from blazor context to the brower
         /// </summary>
@@ -459,6 +459,6 @@ namespace BlazorDownloadFile
         /// <param name="progress">The progress percent of data transfered</param>
         /// <param name="encoderShouldEmitIdentifier">true to specify that the System.Text.Encoding.GetPreamble method returns a Unicode byte order mark.</param>
         /// <returns></returns>
-        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, TimeSpan timeOut, int bufferSize = 32768, string contentType = "text/plain", IProgress<double>? progress = null, bool encoderShouldEmitIdentifier = false);
+        ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, TimeSpan timeOut, int bufferSize = 32768, string contentType = "text/plain", Func<double, Task> progress = null, bool encoderShouldEmitIdentifier = false);
     }
 }
