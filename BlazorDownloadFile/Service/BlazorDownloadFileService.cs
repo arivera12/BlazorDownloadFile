@@ -422,7 +422,6 @@ namespace BlazorDownloadFile
                 yield return new List<T>(source.Skip(bufferSize * i).Take(bufferSize));
             }
         }
-
         private async Task InvokeNullableProgressTaskAsync(int bytesRead, int bytesTotal, Func<double, Task> nullableTask = null)
         {
             if (nullableTask != null)
