@@ -9,15 +9,15 @@
     <PackageProjectUrl>https://github.com/arivera12/BlazorDownloadFile</PackageProjectUrl>
     <RepositoryUrl>https://github.com/arivera12/BlazorDownloadFile</RepositoryUrl>
     <RepositoryType>blazor, c#</RepositoryType>
-    <PackageReleaseNotes>Changed IProgress&lt;double&gt;? progress to Func&lt;double, Task&gt; progress because IProgress is synchronous. Converting the synchronous IProgress to an asynchronous Task and awaiting a very small Task.Delay() during the progress report gives the browser enough time to process any updates for any UI refreshing.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added missing await.</PackageReleaseNotes>
     <Authors>Anthony G. Rivera Cosme</Authors>
     <Company></Company>
     <Copyright>Anthony G. Rivera Cosme</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <Version>2.4.0.0</Version>
-    <AssemblyVersion>2.4.0.0</AssemblyVersion>
-    <FileVersion>2.4.0.0</FileVersion>
+    <Version>2.4.0.1</Version>
+    <AssemblyVersion>2.4.0.1</AssemblyVersion>
+    <FileVersion>2.4.0.1</FileVersion>
   </PropertyGroup>
 
 

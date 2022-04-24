@@ -228,7 +228,7 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytesBase64.Length;
-                progress?.Invoke(totalProgress);
+                await progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", string.Join("", partFile));
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileBase64StringPartitioned", fileName, contentType);
@@ -242,7 +242,7 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytesBase64.Length;
-                progress?.Invoke(totalProgress);
+                await progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationToken, string.Join("", partFile));
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileBase64StringPartitioned", cancellationToken, fileName, contentType);
@@ -256,7 +256,7 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytesBase64.Length;
-                progress?.Invoke(totalProgress);
+                await progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOut, string.Join("", partFile));
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileBase64StringPartitioned", timeOut, fileName, contentType);
@@ -270,7 +270,7 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytes.Length;
-                progress?.Invoke(totalProgress);
+                await progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", partFile);
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
@@ -284,7 +284,7 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytes.Length;
-                progress?.Invoke(totalProgress);
+                await progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationToken, partFile);
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", cancellationToken, fileName, contentType);
@@ -298,7 +298,7 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytes.Length;
-                progress?.Invoke(totalProgress);
+                await progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOut, partFile);
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", timeOut, fileName, contentType);
@@ -313,7 +313,7 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytesLength;
-                progress?.Invoke(totalProgress);
+                await progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", partFile);
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
@@ -328,7 +328,7 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytesLength;
-                progress?.Invoke(totalProgress);
+                await progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationToken, partFile);
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", cancellationToken, fileName, contentType);
@@ -343,7 +343,7 @@ namespace BlazorDownloadFile
             {
                 bytesReaded += partFile.Count;
                 var totalProgress = (double)bytesReaded / bytesLength;
-                progress?.Invoke(totalProgress);
+                await progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOut, partFile);
             }
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", timeOut, fileName, contentType);
@@ -362,7 +362,7 @@ namespace BlazorDownloadFile
                 totalOfBytesReaded += await stream.ReadAsync(buffer, 0, currentBufferSize);
                 pendingBytesToRead -= totalOfBytesReaded;
                 var totalProgress = (double)totalOfBytesReaded / totalOfBytes;
-                progress?.Invoke(totalProgress);
+                await progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", buffer.Select(b => b));
             } while (pendingBytesToRead > 0);
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", fileName, contentType);
@@ -381,7 +381,7 @@ namespace BlazorDownloadFile
                 totalOfBytesReaded += await stream.ReadAsync(buffer, 0, currentBufferSize, cancellationTokenBytesRead);
                 pendingBytesToRead -= totalOfBytesReaded;
                 var totalProgress = (double)totalOfBytesReaded / totalOfBytes;
-                progress?.Invoke(totalProgress);
+                await progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", cancellationTokenJavaScriptInterop, buffer.Select(b => b));
             } while (pendingBytesToRead > 0);
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", cancellationTokenJavaScriptInterop, fileName, contentType);
@@ -400,7 +400,7 @@ namespace BlazorDownloadFile
                 totalOfBytesReaded += await stream.ReadAsync(buffer, 0, currentBufferSize, cancellationTokenBytesRead);
                 pendingBytesToRead -= totalOfBytesReaded;
                 var totalProgress = (double)totalOfBytesReaded / totalOfBytes;
-                progress?.Invoke(totalProgress);
+                await progress?.Invoke(totalProgress);
                 await JSRuntime.InvokeVoidAsync("_blazorDownloadFileBuffersPush", timeOutJavaScriptInterop, buffer.Select(b => b));
             } while (pendingBytesToRead > 0);
             return await JSRuntime.InvokeAsync<DownloadFileResult>("_blazorDowloadFileByteArrayPartitioned", timeOutJavaScriptInterop, fileName, contentType);
