@@ -422,6 +422,13 @@ namespace BlazorDownloadFile
                 yield return new List<T>(source.Skip(bufferSize * i).Take(bufferSize));
             }
         }
+        /// <summary>
+        /// Executes a nullable task with the progress if it's set up for bytes progress reading
+        /// </summary>
+        /// <param name="bytesRead">The bytes to read</param>
+        /// <param name="bytesTotal">The bytes total to read</param>
+        /// <param name="nullableTask">The task for updating the total progress</param>
+        /// <returns></returns>
         private async Task InvokeNullableProgressTaskAsync(int bytesRead, int bytesTotal, Func<double, Task> nullableTask = null)
         {
             if (nullableTask != null)
