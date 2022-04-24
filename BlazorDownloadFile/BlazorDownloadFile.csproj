@@ -9,15 +9,15 @@
     <PackageProjectUrl>https://github.com/arivera12/BlazorDownloadFile</PackageProjectUrl>
     <RepositoryUrl>https://github.com/arivera12/BlazorDownloadFile</RepositoryUrl>
     <RepositoryType>blazor, c#</RepositoryType>
-    <PackageReleaseNotes>Added missing await.</PackageReleaseNotes>
+    <PackageReleaseNotes>Improved download progress execution to prevent calculation and total of download progress when not listening to the download progress.</PackageReleaseNotes>
     <Authors>Anthony G. Rivera Cosme</Authors>
     <Company></Company>
     <Copyright>Anthony G. Rivera Cosme</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <Version>2.4.0.1</Version>
-    <AssemblyVersion>2.4.0.1</AssemblyVersion>
-    <FileVersion>2.4.0.1</FileVersion>
+    <Version>2.4.0.2</Version>
+    <AssemblyVersion>2.4.0.2</AssemblyVersion>
+    <FileVersion>2.4.0.2</FileVersion>
   </PropertyGroup>
 
 
