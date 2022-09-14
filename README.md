@@ -13,7 +13,7 @@
 
 Blazor download files to the browser from c# without any JavaScript library or dependency.
 
-BlazorDownloadFile is the solution to saving files on the client-side, and is perfect for web apps that generates files on the client. 
+BlazorDownloadFile is the solution to saving files on the client-side, and is perfect for web apps that generates files on the client.
 
 However if the file is coming from the server we recommend you to first try to use Content-Disposition attachment response header as it has more cross-browser compatibility.
 
@@ -23,13 +23,13 @@ However if the file is coming from the server we recommend you to first try to u
 
 ## Register the service in your services method
 
-`services.AddBlazorDownloadFile(ServiceLifetime lifetime = ServiceLifetime.Scoped);`
+`builder.Services.AddBlazorDownloadFile();`
 
 Note: `ServiceLifetime.Singleton` is not supported.
 
 ## No javascript library reference dependency unless...
 
-## If you are using Content-Security-Policy "script-src 'self'" then you need to add the script manually: 
+## If you are using Content-Security-Policy "script-src 'self'" then you need to add the script manually:
 
 ### <script src="_content/BlazorDownloadFile/BlazorDownloadFileScript.js"><script>
 
@@ -137,14 +137,14 @@ ValueTask<int> BuffersCount();
 /// <returns></returns>
 ValueTask ClearBuffers();
 /// <summary>
-/// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a base64 string type. 
+/// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a base64 string type.
 /// </summary>
 /// <param name="fileName">The filename</param>
 /// <param name="contentType">The content type</param>
 /// <returns></returns>
 ValueTask<DownloadFileResult> DownloadBase64Buffers(string fileName, string contentType = "application/octet-stream");
 /// <summary>
-/// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a base64 string type. 
+/// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a base64 string type.
 /// </summary>
 /// <param name="fileName">The filename</param>
 /// <param name="cancellationToken">The cancellation token</param>
@@ -152,7 +152,7 @@ ValueTask<DownloadFileResult> DownloadBase64Buffers(string fileName, string cont
 /// <returns></returns>
 ValueTask<DownloadFileResult> DownloadBase64Buffers(string fileName, CancellationToken cancellationToken, string contentType = "application/octet-stream");
 /// <summary>
-/// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a base64 string type. 
+/// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a base64 string type.
 /// </summary>
 /// <param name="fileName">The filename</param>
 /// <param name="timeOut">The timeout</param>
@@ -160,14 +160,14 @@ ValueTask<DownloadFileResult> DownloadBase64Buffers(string fileName, Cancellatio
 /// <returns></returns>
 ValueTask<DownloadFileResult> DownloadBase64Buffers(string fileName, TimeSpan timeOut, string contentType = "application/octet-stream");
 /// <summary>
-/// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a byte array, byte enumerable or a stream types. 
+/// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a byte array, byte enumerable or a stream types.
 /// </summary>
 /// <param name="fileName">The filename</param>
 /// <param name="contentType">The content type</param>
 /// <returns></returns>
 ValueTask<DownloadFileResult> DownloadBinaryBuffers(string fileName, string contentType = "application/octet-stream");
 /// <summary>
-/// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a byte array, byte enumerable or a stream types. 
+/// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a byte array, byte enumerable or a stream types.
 /// </summary>
 /// <param name="fileName">The filename</param>
 /// <param name="cancellationToken">The cancellation token</param>
@@ -175,7 +175,7 @@ ValueTask<DownloadFileResult> DownloadBinaryBuffers(string fileName, string cont
 /// <returns></returns>
 ValueTask<DownloadFileResult> DownloadBinaryBuffers(string fileName, CancellationToken cancellationToken, string contentType = "application/octet-stream");
 /// <summary>
-/// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a byte array, byte enumerable or a stream types. 
+/// Merges and downloads all pending buffers into a single file in the browser. This method should be called when the added buffers where a byte array, byte enumerable or a stream types.
 /// </summary>
 /// <param name="fileName">The filename</param>
 /// <param name="timeOut">The timeout</param>
@@ -183,7 +183,7 @@ ValueTask<DownloadFileResult> DownloadBinaryBuffers(string fileName, Cancellatio
 /// <returns></returns>
 ValueTask<DownloadFileResult> DownloadBinaryBuffers(string fileName, TimeSpan timeOut, string contentType = "application/octet-stream");
 /// <summary>
-/// Download a file from blazor context to the browser 
+/// Download a file from blazor context to the browser
 /// </summary>
 /// <param name="fileName">The filename</param>
 /// <param name="bytesBase64">The bytes base 64 of the file</param>
@@ -191,7 +191,7 @@ ValueTask<DownloadFileResult> DownloadBinaryBuffers(string fileName, TimeSpan ti
 /// <returns></returns>
 ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, string contentType = "application/octet-stream");
 /// <summary>
-/// Download a file from blazor context to the browser 
+/// Download a file from blazor context to the browser
 /// </summary>
 /// <param name="fileName">The filename</param>
 /// <param name="bytesBase64">The bytes base 64 of the file</param>
@@ -200,7 +200,7 @@ ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, 
 /// <returns></returns>
 ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, string contentType = "application/octet-stream");
 /// <summary>
-/// Download a file from blazor context to the browser 
+/// Download a file from blazor context to the browser
 /// </summary>
 /// <param name="fileName">The filename</param>
 /// <param name="bytesBase64">The bytes base 64 of the file</param>
@@ -321,7 +321,7 @@ ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plain
 /// <returns></returns>
 ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plainText, Encoding encoding, TimeSpan timeOut, string contentType = "text/plain", bool encoderShouldEmitIdentifier = false);
 /// <summary>
-/// Download a file from blazor context to the browser 
+/// Download a file from blazor context to the browser
 /// </summary>
 /// <param name="fileName">The filename</param>
 /// <param name="bytesBase64">The bytes base 64 of the file</param>
@@ -331,7 +331,7 @@ ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plain
 /// <returns></returns>
 ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null);
 /// <summary>
-/// Download a file from blazor context to the browser 
+/// Download a file from blazor context to the browser
 /// </summary>
 /// <param name="fileName">The filename</param>
 /// <param name="bytesBase64">The bytes base 64 of the file</param>
@@ -342,7 +342,7 @@ ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, 
 /// <returns></returns>
 ValueTask<DownloadFileResult> DownloadFile(string fileName, string bytesBase64, CancellationToken cancellationToken, int bufferSize = 32768, string contentType = "application/octet-stream", IProgress<double>? progress = null);
 /// <summary>
-/// Download a file from blazor context to the browser 
+/// Download a file from blazor context to the browser
 /// </summary>
 /// <param name="fileName">The filename</param>
 /// <param name="bytesBase64">The bytes base 64 of the file</param>
@@ -492,21 +492,22 @@ ValueTask<DownloadFileResult> DownloadFileFromText(string fileName, string plain
 
 ### Performance Considerations and Understandings
 
-Regarding on some performance test I have done in this library is that, `base64` string and `byte[]` performs faster than `Stream` always. 
+Regarding on some performance test I have done in this library is that, `base64` string and `byte[]` performs faster than `Stream` always.
 
-Since there is not direct conversion between from c# `Stream` to a JavaScript object its a little more expensive this task. 
+Since there is not direct conversion between from c# `Stream` to a JavaScript object its a little more expensive this task.
 
-When its `base64` this is the most simple data type to transfer and work with it. 
+When its `base64` this is the most simple data type to transfer and work with it.
 
-`byte[]` gets transformed into `base64` string when transfered to JavaScript and for some reason it won't work properly when encoding cause its `base64` representation turns to be something else when going after the second partition when gets encoded to `base64` string. (If anyone knows how to fix or workaround this make a pull request) 
+`byte[]` gets transformed into `base64` string when transfered to JavaScript and for some reason it won't work properly when encoding cause its `base64` representation turns to be something else when going after the second partition when gets encoded to `base64` string. (If anyone knows how to fix or workaround this make a pull request)
 
-Based on the las sentence, a list of bytes gets passed down from c#  to JavaScript as an array of intergers with the bytes representation on JavaScript and this is the reason why I send a `IList<byte>` rather than `byte[]` internally to JavaScript. 
+Based on the las sentence, a list of bytes gets passed down from c# to JavaScript as an array of intergers with the bytes representation on JavaScript and this is the reason why I send a `IList<byte>` rather than `byte[]` internally to JavaScript.
 
-The binary representation seems to perform very well since we just needed to call `Uint8Array` and push the binary representation entirely into the array to then pass it down to the JavaScript native `Blob` object. 
+The binary representation seems to perform very well since we just needed to call `Uint8Array` and push the binary representation entirely into the array to then pass it down to the JavaScript native `Blob` object.
 
 <b>Take note that you may use the overload methods with buffers if you are sending big files over the wire and also that browsers have their own limitations on [JavaScript Max Blob Size](https://stackoverflow.com/questions/28307789/is-there-any-limitation-on-javascript-max-blob-size) based on the device hardware, browser vendor and the OS.</b>
 
 <b>Take note also that blazor server side uses [Signal R](https://docs.microsoft.com/en-us/aspnet/core/signalr/security?view=aspnetcore-3.1#buffer-management) and has its data transfer (buffer) limitations.</b>
 
 ## License
+
 MIT
