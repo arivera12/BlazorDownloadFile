@@ -39,7 +39,7 @@ Note: `ServiceLifetime.Singleton` is not supported.
 
 ### BlazorDownloadFileService Methods
 
-```
+```csharp
 /// <summary>
 /// Adds a buffer to javascript side
 /// </summary>
